@@ -1,5 +1,2 @@
-import React from "react";
-
-const R = () => <span>LoggedOutHome</span>;
-
-export default R;
+import LoggedOutHomePresenter from "./LoggedOutHomePresenter";
+export default LoggedOutHomePresenter;
