@@ -9,6 +9,7 @@ Client for the chat service for couples named "We There" made with ReactJS, Apol
 
 - [ ] Home
 - [ ] Sign Up
+- [ ] Verify Phone
 - [ ] Local Login
 - [ ] Social Login
 
@@ -16,13 +17,12 @@ Client for the chat service for couples named "We There" made with ReactJS, Apol
 
 - [ ] Home
 - [ ] Couple Verification
-- [ ] Update Profile
+- [ ] Initial Profile
 - [ ] Profile
 - [ ] Chat
 - [ ] Settings
 - [ ] Places
 - [ ] Add Place
-- [ ] Visited Places
 - [ ] Feeds
 - [ ] Add Feed
-- [ ] Add Comment
+- [ ] Feed Detail
