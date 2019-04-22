@@ -1,5 +1,2 @@
-import React from "react";
-
-const R = () => <span>SignUp</span>;
-
-export default R;
+import SignUpContainer from "./SignUpContainer";
+export default SignUpContainer;

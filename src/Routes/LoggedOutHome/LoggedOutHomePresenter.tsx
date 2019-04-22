@@ -41,7 +41,7 @@ const Button = styled.button`
   margin-bottom: 20px;
   box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.1);
   text-align: center;
-  font-size: 14px;
+  font-size: 13px;
   font-family: "Noto Sans KR", sans-serif;
   color: ${props => props.theme.greyColor}
   transition: all 0.1s ease-in-out
@@ -63,10 +63,10 @@ const LoggedOutHomePresenter: React.SFC<IProps> = () => (
       <Header>WE THERE</Header>
       <Footer>
         <ExtendedLink to={"/signup"}>
-          <Button>새로 가입하기 🎈</Button>
+          <Button>새로 가입하기 👨‍👩‍👧</Button>
         </ExtendedLink>
         <ExtendedLink to={"/login"}>
-          <Button>아이디로 로그인하기 💕</Button>
+          <Button>아이디로 로그인하기 🎶</Button>
         </ExtendedLink>
         <ExtendedLink to={"/social-login"}>
           <Button>소셜 로그인하기 💌</Button>
