@@ -24,6 +24,11 @@ const GlobalStyle = createGlobalStyle`
   h1,h2,h3,h4,h5,h6{
       font-family:'Do Hyeon', sans-serif;
   }
+  .Toastify__toast-body {
+     font-family: 'Noto Sans KR', sans-serif;
+     font-size: 14px; 
+     text-align: center
+  }
 `;
 
 export default GlobalStyle;
