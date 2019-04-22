@@ -9,6 +9,7 @@ const Container = styled.input`
   color: ${props => props.theme.greyColor};
   text-align: center;
   font-family: "Noto Sans KR", sans-serif;
+  box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.1);
   :focus {
     border: 3px solid #ffe869;
   }
