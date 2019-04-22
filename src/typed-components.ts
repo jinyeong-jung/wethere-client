@@ -2,9 +2,10 @@ import * as styledComponents from "styled-components";
 import { ThemedStyledComponentsModule } from "styled-components";
 
 interface IThemeInterface {
-  deepBlueColor: string;
-  lightBlueColor: string;
-  navyColor: string;
+  blueColor: string;
+  greyColor: string;
+  lightYellowColor: string;
+  pinkColor: string;
   yellowColor: string;
 }
 

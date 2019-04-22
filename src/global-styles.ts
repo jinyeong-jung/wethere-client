@@ -2,13 +2,15 @@ import reset from "styled-reset";
 import { createGlobalStyle } from "./typed-components";
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Maven+Pro|Noto+Sans+KR')
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Noto+Sans+KR:300,400,700');
   ${reset}
   * {
       box-sizing: border-box;
   }
   body {
-    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
+    ;
+    margin: 0px;
   }
   a {
       color: inherit;
@@ -20,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
       &:active {outline:none}
   }
   h1,h2,h3,h4,h5,h6{
-      font-family:'Maven Pro', sans-serif;
+      font-family:'Do Hyeon', sans-serif;
   }
 `;
 

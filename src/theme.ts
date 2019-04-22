@@ -1,8 +1,9 @@
 const theme = {
-  deepBlueColor: "#0ea5c6",
-  lightBlueColor: "#a0edf7",
-  navyColor: "#074684",
-  yellowColor: "#f2efb6"
+  blueColor: "#57D1C9",
+  greyColor: "#333",
+  lightYellowColor: "#FFFBCB",
+  pinkColor: "#ED5485",
+  yellowColor: "#FFE869"
 };
 
 export default theme;

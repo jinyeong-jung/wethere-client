@@ -7,7 +7,7 @@ Client for the chat service for couples named "We There" made with ReactJS, Apol
 
 ## Logged Out:
 
-- [ ] Home
+- [x] Home
 - [ ] Sign Up
 - [ ] Verify Phone
 - [ ] Local Login
