@@ -2,6 +2,28 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: signUpEnd
+// ====================================================
+
+export interface signUpEnd_SignUpEnd {
+  __typename: "SignUpEndResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface signUpEnd {
+  SignUpEnd: signUpEnd_SignUpEnd;
+}
+
+export interface signUpEndVariables {
+  phoneNumber: string;
+  key: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: signUpStart
 // ====================================================
 

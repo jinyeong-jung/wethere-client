@@ -16,12 +16,13 @@ const Container = styled.input`
 `;
 
 interface IProps {
-  placeholder: string;
+  placeholder?: string;
   type?: string;
   name?: string;
   required?: boolean;
   value: string;
   onChange: any;
+  className?: string;
 }
 
 const Input: React.SFC<IProps> = ({
@@ -30,7 +31,8 @@ const Input: React.SFC<IProps> = ({
   name,
   required,
   value,
-  onChange
+  onChange,
+  className
 }) => (
   <Container
     placeholder={placeholder}
@@ -39,6 +41,7 @@ const Input: React.SFC<IProps> = ({
     required={required}
     value={value}
     onChange={onChange}
+    className={className}
   />
 );
 

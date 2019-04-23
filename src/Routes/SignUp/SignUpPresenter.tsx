@@ -3,6 +3,7 @@ import Helmet from "react-helmet";
 import BackArrow from "../../Components/BackArrow";
 import Button from "../../Components/Button";
 import Input from "../../Components/Input";
+import Title from "../../Components/Title/Title";
 import styled from "../../typed-components";
 
 const Container = styled.div`
@@ -16,13 +17,6 @@ const ExtendedBackArrow = styled(BackArrow)`
   position: absolute;
   left: 10px;
   top: 10px;
-`;
-
-const Title = styled.h1`
-  margin: 70px 30px;
-  text-align: center;
-  font-size: 70px;
-  color: white;
 `;
 
 const Form = styled.form`
@@ -57,7 +51,7 @@ const SignUpPresenter: React.SFC<IProps> = ({
       <title>회원가입 - We There</title>
     </Helmet>
     <ExtendedBackArrow backTo={"/"} />
-    <Title>회원가입</Title>
+    <Title text={"회원가입"} />
     <Form onSubmit={onSubmit}>
       <Input
         placeholder={"아이디"}
