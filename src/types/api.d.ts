@@ -69,6 +69,101 @@ export interface signUpStartVariables {
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
+// ====================================================
+// GraphQL mutation operation: facebookLogin
+// ====================================================
+
+export interface facebookLogin_FacebookLogin {
+  __typename: "FacebookLoginResponse";
+  ok: boolean;
+  error: string | null;
+  token: string | null;
+}
+
+export interface facebookLogin {
+  FacebookLogin: facebookLogin_FacebookLogin;
+}
+
+export interface facebookLoginVariables {
+  facebookId: string;
+  name: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: googleLogin
+// ====================================================
+
+export interface googleLogin_GoogleLogin {
+  __typename: "GoogleLoginResponse";
+  ok: boolean;
+  error: string | null;
+  token: string | null;
+}
+
+export interface googleLogin {
+  GoogleLogin: googleLogin_GoogleLogin;
+}
+
+export interface googleLoginVariables {
+  googleId: string;
+  name: string;
+  imageUrl?: string | null;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: naverLogin
+// ====================================================
+
+export interface naverLogin_NaverLogin {
+  __typename: "NaverLoginResponse";
+  ok: boolean;
+  error: string | null;
+  token: string | null;
+}
+
+export interface naverLogin {
+  NaverLogin: naverLogin_NaverLogin;
+}
+
+export interface naverLoginVariables {
+  naverId: string;
+  nickname: string;
+  imageUrl?: string | null;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: kakaoLogin
+// ====================================================
+
+export interface kakaoLogin_KakaoLogin {
+  __typename: "KakaoLoginResponse";
+  ok: boolean;
+  error: string | null;
+  token: string | null;
+}
+
+export interface kakaoLogin {
+  KakaoLogin: kakaoLogin_KakaoLogin;
+}
+
+export interface kakaoLoginVariables {
+  kakaoId: string;
+  nickname: string;
+  thumbnail?: string | null;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
