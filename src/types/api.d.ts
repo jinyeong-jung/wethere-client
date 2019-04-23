@@ -2,6 +2,29 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: localLogin
+// ====================================================
+
+export interface localLogin_Login {
+  __typename: "LoginResponse";
+  ok: boolean;
+  error: string | null;
+  token: string | null;
+}
+
+export interface localLogin {
+  Login: localLogin_Login;
+}
+
+export interface localLoginVariables {
+  username: string;
+  password: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: signUpEnd
 // ====================================================
 

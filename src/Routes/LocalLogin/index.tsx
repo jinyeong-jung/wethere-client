@@ -1,5 +1,2 @@
-import React from "react";
-
-const R = () => <span>Local Login</span>;
-
-export default R;
+import LocalLoginContainer from "./LocalLoginContainer";
+export default LocalLoginContainer;
