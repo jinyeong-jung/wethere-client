@@ -164,6 +164,36 @@ export interface kakaoLoginVariables {
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
+// ====================================================
+// GraphQL query operation: getMyProfile
+// ====================================================
+
+export interface getMyProfile_GetMyProfile_user {
+  __typename: "User";
+  id: number;
+  nickname: string | null;
+  gender: string | null;
+  birth: string | null;
+  status: string | null;
+  profilePhoto: string | null;
+  coupleForPartnerOneId: number | null;
+  coupleForPartnerTwoId: number | null;
+}
+
+export interface getMyProfile_GetMyProfile {
+  __typename: "GetMyProfileResponse";
+  ok: boolean;
+  error: string | null;
+  user: getMyProfile_GetMyProfile_user | null;
+}
+
+export interface getMyProfile {
+  GetMyProfile: getMyProfile_GetMyProfile;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
