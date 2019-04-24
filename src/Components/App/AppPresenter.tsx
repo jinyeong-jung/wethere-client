@@ -4,6 +4,7 @@ import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import AddFeed from "../../Routes/AddFeed";
 import AddPlace from "../../Routes/AddPlace";
 import Chat from "../../Routes/Chat";
+import CompleteCoupleVerification from "../../Routes/CompleteCoupleVerification";
 import CoupleVerification from "../../Routes/CoupleVerification";
 import FeedDetail from "../../Routes/FeedDetail";
 import Feeds from "../../Routes/Feeds";
@@ -14,6 +15,7 @@ import LoggedOutHome from "../../Routes/LoggedOutHome";
 import PhoneVerification from "../../Routes/PhoneVerification";
 import Places from "../../Routes/Places";
 import Profile from "../../Routes/Profile";
+import RequestCoupleVerification from "../../Routes/RequestCoupleVerification";
 import Settings from "../../Routes/Settings";
 import SignUp from "../../Routes/SignUp";
 import SocialLogin from "../../Routes/SocialLogin";
@@ -46,6 +48,16 @@ const LoggedInRoutes: React.SFC = () => (
       path={"/verify-couple"}
       exact={true}
       component={CoupleVerification}
+    />
+    <Route
+      path={"/verify-couple/request"}
+      exact={true}
+      component={RequestCoupleVerification}
+    />
+    <Route
+      path={"/verify-couple/complete"}
+      exact={true}
+      component={CompleteCoupleVerification}
     />
     <Route path={"/initial-profile"} exact={true} component={InitialProfile} />
     <Route path={"/profile"} exact={true} component={Profile} />

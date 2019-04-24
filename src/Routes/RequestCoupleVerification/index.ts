@@ -1,0 +1,2 @@
+import RequestCoupleVerificationContainer from "./RequestCoupleVerificationContainer";
+export default RequestCoupleVerificationContainer;

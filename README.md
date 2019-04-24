@@ -21,6 +21,9 @@ Client for the chat service for couples named "We There" made with ReactJS, Apol
 
 - [ ] Home
 - [ ] Couple Verification
+  - [x] Request
+  - [ ] Waiting (?)
+  - [ ] Complete
 - [ ] Initial Profile
 - [ ] Profile
 - [ ] Chat

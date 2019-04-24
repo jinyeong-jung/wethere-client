@@ -41,7 +41,7 @@ class LocalLoginContainer extends React.Component<
                     }
                   });
                 }
-                toast("로그인되었습니다.");
+                toast(`안녕하세요! 오늘도 반가워요 🦄`);
               } else {
                 toast(Login.error);
               }

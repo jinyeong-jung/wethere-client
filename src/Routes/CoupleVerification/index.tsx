@@ -1,5 +1,2 @@
-import React from "react";
-
-const R = () => <span>Couple Verification</span>;
-
-export default R;
+import CoupleVerificationContainer from "./CoupleVerificationContainer";
+export default CoupleVerificationContainer;

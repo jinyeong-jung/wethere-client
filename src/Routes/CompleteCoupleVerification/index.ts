@@ -1,0 +1,2 @@
+import CompleteCoupleVerificationContainer from "./CompleteCoupleVerificationContainer";
+export default CompleteCoupleVerificationContainer;
