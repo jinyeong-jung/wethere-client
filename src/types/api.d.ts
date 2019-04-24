@@ -24,6 +24,29 @@ export interface completeCoupleVerificationVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: initialProfile
+// ====================================================
+
+export interface initialProfile_UpdateMyProfile {
+  __typename: "UpdateMyProfileResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface initialProfile {
+  UpdateMyProfile: initialProfile_UpdateMyProfile;
+}
+
+export interface initialProfileVariables {
+  nickname?: string | null;
+  gender?: string | null;
+  profilePhoto?: string | null;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: localLogin
 // ====================================================
 

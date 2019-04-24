@@ -1,6 +1,7 @@
 import React from "react";
 import Helmet from "react-helmet";
 import Input from "src/Components/Input";
+import PhotoInput from "src/Components/PhotoInput";
 import Exit from "../../Components/Exit/Exit";
 import Form from "../../Components/Form/index";
 import styled from "../../typed-components";
@@ -90,49 +91,52 @@ const Data = styled(Input)`
   width: 65%;
 `;
 
-const Image = styled.img`
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
-  box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.1);
-`;
-
 interface IProps {
   data?: any;
   loading: boolean;
+  photo: string;
+  nickname: string;
+  gender: string;
+  onInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onSubmit: any;
+  uploading: boolean;
 }
 
 const InitialProfilePresenter: React.SFC<IProps> = ({
   data: { GetMyProfile: { user = null } = {} } = {},
-  loading
+  loading,
+  photo,
+  nickname,
+  gender,
+  onInputChange,
+  onSubmit,
+  uploading
 }) => (
   <Container>
     <Helmet>
       <title>프로필 - We There</title>
     </Helmet>
     <ExtendedExit backTo={"/"} />
-
     <TextContainer>
       <Text>We There를 시작하기 전에</Text>
       <Text>간단한 프로필 설정을 하고 갈까요?</Text>
     </TextContainer>
     {!loading && user && (
-      <ExtendedForm submitFn={null}>
+      <ExtendedForm submitFn={onSubmit}>
         <ImageContainer>
-          <Image
-            src={
-              user.profilePhoto ||
-              "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
-            }
+          <PhotoInput
+            uploading={uploading}
+            fileUrl={photo}
+            onChange={onInputChange}
           />
         </ImageContainer>
         <NicknameContainer>
           <Label>닉네임</Label>
           <Data
-            value={user.nickname}
+            value={nickname}
             name={"nickname"}
             type={"text"}
-            onChange={null}
+            onChange={onInputChange}
           />
         </NicknameContainer>
         <GenderContainer>
@@ -142,7 +146,8 @@ const InitialProfilePresenter: React.SFC<IProps> = ({
               value={"MALE"}
               name={"gender"}
               type={"radio"}
-              checked={user.gender === "MALE"}
+              checked={gender === "MALE"}
+              onChange={onInputChange}
             />
           </Gender>
           <Gender>
@@ -151,7 +156,8 @@ const InitialProfilePresenter: React.SFC<IProps> = ({
               value={"FEMALE"}
               name={"gender"}
               type={"radio"}
-              checked={user.gender === "FEMALE"}
+              checked={gender === "FEMALE"}
+              onChange={onInputChange}
             />
           </Gender>
         </GenderContainer>

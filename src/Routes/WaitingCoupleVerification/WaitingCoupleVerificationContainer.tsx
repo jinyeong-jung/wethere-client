@@ -29,7 +29,6 @@ class WaitingCoupleVerificationContainer extends React.Component<
                     this.props.history.push("/verify-couple");
                   }, 2000);
                 }
-                console.log(user!.verifiedCouple);
                 if (user!.verifiedCouple) {
                   toast("커플 등록이 완료되었습니다 💌");
                   setTimeout(() => {

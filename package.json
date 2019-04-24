@@ -6,6 +6,7 @@
     "apollo": "2.3.1",
     "apollo-boost": "^0.3.1",
     "apollo-language-server": "^1.6.3",
+    "axios": "^0.18.0",
     "core-js": "^3.0.1",
     "graphql": "^14.2.1",
     "prop-types": "^15.7.2",
@@ -35,7 +36,7 @@
     "@types/react": "^16.8.13",
     "@types/react-dom": "^16.8.4",
     "@types/react-router-dom": "^4.3.2",
-    "typescript": "^3.4.4"
+    "typescript": "3.2.4"
   },
   "resolutions": {
     "core-js": "3.0.0-beta.11"
