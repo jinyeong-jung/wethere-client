@@ -20,9 +20,9 @@ Client for the chat service for couples named "We There" made with ReactJS, Apol
 ## Logged In:
 
 - [ ] Home
-- [ ] Couple Verification
+- [x] Couple Verification
   - [x] Request
-  - [ ] Waiting (파트너의 인증 완료 대기)
+  - [x] Waiting
   - [x] Complete
 - [ ] Initial Profile
 - [ ] Profile

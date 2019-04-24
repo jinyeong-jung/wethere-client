@@ -35,9 +35,8 @@ class RequestCoupleVerificationContainer extends React.Component<
           const { RequestCoupleVerification } = data;
           if (RequestCoupleVerification.ok) {
             toast("인증번호를 보냈습니다. 잠시만 기다려 주세요!");
-            // 아래 push 부분 수정 요망. 파트너 수락 대기시 페이지 작성?
             setTimeout(() => {
-              this.props.history.push("/");
+              this.props.history.push("/verify-couple/waiting");
             }, 3000);
           } else {
             toast(RequestCoupleVerification.error);

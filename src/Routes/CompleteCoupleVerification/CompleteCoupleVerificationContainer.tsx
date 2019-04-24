@@ -35,7 +35,6 @@ class CompleteCoupleVerificationContainer extends React.Component<
         variables={{ phoneNumber, key: verificationKey }}
         onCompleted={data => {
           const { CompleteCoupleVerification } = data;
-          console.log(CompleteCoupleVerification);
           if (CompleteCoupleVerification.ok) {
             toast("커플 등록이 완료되었습니다 💌");
             setTimeout(() => {

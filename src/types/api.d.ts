@@ -219,6 +219,7 @@ export interface getMyProfile_GetMyProfile_user {
   birth: string | null;
   status: string | null;
   profilePhoto: string | null;
+  verifiedCouple: boolean | null;
   coupleForPartnerOneId: number | null;
   coupleForPartnerTwoId: number | null;
 }

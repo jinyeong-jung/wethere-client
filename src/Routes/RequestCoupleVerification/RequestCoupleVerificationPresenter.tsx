@@ -67,7 +67,7 @@ const RequestCoupleVerificationPresenter: React.SFC<IProps> = ({
       <title>인증 번호 보내기 - We There</title>
     </Helmet>
     <ExtendedBackarrow backTo={"/verify-couple"} />
-    <Title text={"인증번호 전송"} />
+    <Title text={"인증 번호 전송"} />
     <ExtendedForm submitFn={onSubmit}>
       <Text>파트너의 핸드폰 번호를 입력하세요.</Text>
       <Text>(예: +8201012345678)</Text>

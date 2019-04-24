@@ -12,6 +12,7 @@ export const USER_PROFILE = gql`
         birth
         status
         profilePhoto
+        verifiedCouple
         coupleForPartnerOneId
         coupleForPartnerTwoId
       }

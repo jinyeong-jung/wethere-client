@@ -1,0 +1,2 @@
+import WaitingCoupleVerificationContainer from "./WaitingCoupleVerificationContainer";
+export default WaitingCoupleVerificationContainer;

@@ -19,6 +19,7 @@ import RequestCoupleVerification from "../../Routes/RequestCoupleVerification";
 import Settings from "../../Routes/Settings";
 import SignUp from "../../Routes/SignUp";
 import SocialLogin from "../../Routes/SocialLogin";
+import WaitingCoupleVerification from "../../Routes/WaitingCoupleVerification";
 
 interface IProps {
   isLoggedIn: boolean;
@@ -58,6 +59,11 @@ const LoggedInRoutes: React.SFC = () => (
       path={"/verify-couple/complete"}
       exact={true}
       component={CompleteCoupleVerification}
+    />
+    <Route
+      path={"/verify-couple/waiting"}
+      exact={true}
+      component={WaitingCoupleVerification}
     />
     <Route path={"/initial-profile"} exact={true} component={InitialProfile} />
     <Route path={"/profile"} exact={true} component={Profile} />

@@ -18,10 +18,7 @@ class LoggedInHomeContainer extends React.Component<RouteComponentProps<any>> {
                 const {
                   GetMyProfile: { user }
                 } = profileData.data;
-                if (
-                  user!.coupleForPartnerOneId === null &&
-                  user!.coupleForPartnerTwoId === null
-                ) {
+                if (!user!.verifiedCouple) {
                   this.props.history.push("/verify-couple");
                 }
               }
