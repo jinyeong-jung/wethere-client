@@ -9,7 +9,6 @@ export const USER_PROFILE = gql`
         id
         nickname
         gender
-        birth
         status
         profilePhoto
         verifiedCouple

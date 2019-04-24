@@ -216,7 +216,6 @@ export interface getMyProfile_GetMyProfile_user {
   id: number;
   nickname: string | null;
   gender: string | null;
-  birth: string | null;
   status: string | null;
   profilePhoto: string | null;
   verifiedCouple: boolean | null;

@@ -1,6 +1,8 @@
 import React from "react";
 import Helmet from "react-helmet";
+import Input from "src/Components/Input";
 import Exit from "../../Components/Exit/Exit";
+import Form from "../../Components/Form/index";
 import styled from "../../typed-components";
 
 const Container = styled.div`
@@ -14,7 +16,18 @@ const Container = styled.div`
 const ExtendedExit = styled(Exit)`
   position: absolute;
   top: 10px;
+  left: 10px;
+`;
+
+const Save = styled.input`
+  position: absolute;
+  top: 10px;
   right: 10px;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  padding: 7px;
+  cursor: pointer;
 `;
 
 const TextContainer = styled.div`
@@ -30,44 +43,121 @@ const Text = styled.span`
   margin-bottom: 10px;
 `;
 
-const Photo = styled.div``;
+const ExtendedForm = styled(Form)`
+  width: 100%;
+`;
 
-const Nickname = styled.div``;
+const ImageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 35px;
+  width: 100%;
+`;
 
-const Gender = styled.div``;
+const NicknameContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 35px;
+  width: 100%;
+`;
 
-const Birth = styled.div``;
+const GenderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+`;
 
-const Label = styled.span``;
+const Gender = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+`;
 
-const Data = styled.span``;
+const Label = styled.span`
+  color: white;
+  font-size: 13px;
+`;
 
-const InitialProfilePresenter: React.SFC = () => (
+const Data = styled(Input)`
+  margin: 0;
+  margin-top: 10px;
+  color: ${props => props.theme.lightGreyColor};
+  padding: 10px;
+  width: 65%;
+`;
+
+const Image = styled.img`
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.1);
+`;
+
+interface IProps {
+  data?: any;
+  loading: boolean;
+}
+
+const InitialProfilePresenter: React.SFC<IProps> = ({
+  data: { GetMyProfile: { user = null } = {} } = {},
+  loading
+}) => (
   <Container>
     <Helmet>
       <title>프로필 - We There</title>
     </Helmet>
     <ExtendedExit backTo={"/"} />
+
     <TextContainer>
       <Text>We There를 시작하기 전에</Text>
       <Text>간단한 프로필 설정을 하고 갈까요?</Text>
     </TextContainer>
-    <Photo>
-      <Label>라벨</Label>
-      <Data>사진</Data>
-    </Photo>
-    <Nickname>
-      <Label>라벨</Label>
-      <Data>닉네임</Data>
-    </Nickname>
-    <Gender>
-      <Label>라벨</Label>
-      <Data>성별</Data>
-    </Gender>
-    <Birth>
-      <Label>라벨</Label>
-      <Data>생년월일</Data>
-    </Birth>
+    {!loading && user && (
+      <ExtendedForm submitFn={null}>
+        <ImageContainer>
+          <Image
+            src={
+              user.profilePhoto ||
+              "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+            }
+          />
+        </ImageContainer>
+        <NicknameContainer>
+          <Label>닉네임</Label>
+          <Data
+            value={user.nickname}
+            name={"nickname"}
+            type={"text"}
+            onChange={null}
+          />
+        </NicknameContainer>
+        <GenderContainer>
+          <Gender>
+            <Label>남　</Label>
+            <input
+              value={"MALE"}
+              name={"gender"}
+              type={"radio"}
+              checked={user.gender === "MALE"}
+            />
+          </Gender>
+          <Gender>
+            <Label>여　</Label>
+            <input
+              value={"FEMALE"}
+              name={"gender"}
+              type={"radio"}
+              checked={user.gender === "FEMALE"}
+            />
+          </Gender>
+        </GenderContainer>
+        <Save value={"SAVE"} type={"submit"} />
+      </ExtendedForm>
+    )}
   </Container>
 );
 
