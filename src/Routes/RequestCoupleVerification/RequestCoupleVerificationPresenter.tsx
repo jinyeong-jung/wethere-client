@@ -39,12 +39,13 @@ const ExtendedInput = styled(Input)`
   width: 65%;
   ::placeholder {
     font-size: 13px;
-    color: #bbb;
+    color: ${props => props.theme.lightGreyColor};
   }
 `;
 
 const ExtendedButton = styled(Button)`
-  width: 65%;
+  width: 65%;\
+  background-color: ${props => props.theme.pinkColor}
   :active {
     transform: scale(0.99);
   }
@@ -66,7 +67,7 @@ const RequestCoupleVerificationPresenter: React.SFC<IProps> = ({
       <title>인증 번호 보내기 - We There</title>
     </Helmet>
     <ExtendedBackarrow backTo={"/verify-couple"} />
-    <Title text={"인증 번호 보내기"} />
+    <Title text={"인증번호 전송"} />
     <ExtendedForm submitFn={onSubmit}>
       <Text>파트너의 핸드폰 번호를 입력하세요.</Text>
       <Text>(예: +8201012345678)</Text>

@@ -41,6 +41,9 @@ class RequestCoupleVerificationContainer extends React.Component<
             }, 3000);
           } else {
             toast(RequestCoupleVerification.error);
+            setTimeout(() => {
+              this.props.history.push("/");
+            });
           }
         }}
       >

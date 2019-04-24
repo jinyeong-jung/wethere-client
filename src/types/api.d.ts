@@ -2,6 +2,28 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: completeCoupleVerification
+// ====================================================
+
+export interface completeCoupleVerification_CompleteCoupleVerification {
+  __typename: "CompleteCoupleVerificationResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface completeCoupleVerification {
+  CompleteCoupleVerification: completeCoupleVerification_CompleteCoupleVerification;
+}
+
+export interface completeCoupleVerificationVariables {
+  phoneNumber: string;
+  key: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: localLogin
 // ====================================================
 
