@@ -92,6 +92,30 @@ export interface signUpEndVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: updateMyProfile
+// ====================================================
+
+export interface updateMyProfile_UpdateMyProfile {
+  __typename: "UpdateMyProfileResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface updateMyProfile {
+  UpdateMyProfile: updateMyProfile_UpdateMyProfile;
+}
+
+export interface updateMyProfileVariables {
+  nickname?: string | null;
+  gender?: string | null;
+  status?: statusOptions | null;
+  profilePhoto?: string | null;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: requestCoupleVerification
 // ====================================================
 
@@ -263,6 +287,16 @@ export interface getMyProfile {
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
+
+export enum statusOptions {
+  CONFUSED = "CONFUSED",
+  DEPRESSED = "DEPRESSED",
+  ENERGIZED = "ENERGIZED",
+  HAPPY = "HAPPY",
+  MAD = "MAD",
+  PEACEFUL = "PEACEFUL",
+  UNCERTAIN = "UNCERTAIN",
+}
 
 //==============================================================
 // END Enums and Input Objects
