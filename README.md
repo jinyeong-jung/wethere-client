@@ -28,7 +28,7 @@ Client for the chat service for couples named "We There" made with ReactJS, Apol
 - [ ] Chat
   - [x] Add Chat
   - [ ] Chat Room
-- [ ] Settings
+- [x] Settings
 - [ ] Places
 - [ ] Add Place
 - [ ] Feeds

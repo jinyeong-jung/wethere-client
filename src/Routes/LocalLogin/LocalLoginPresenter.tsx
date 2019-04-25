@@ -40,6 +40,9 @@ const ExtendedInput = styled(Input)`
 
 const ExtendedButton = styled(Button)`
   width: 65%;
+  :active {
+    transform: scale(0.99);
+  }
 `;
 
 interface IProps {
