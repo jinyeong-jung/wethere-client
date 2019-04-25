@@ -7,8 +7,18 @@ import LoggedOutHomePresenter from "./LoggedInHomePresenter";
 
 class ProfileQuery extends Query<getMyProfile> {}
 
-class LoggedInHomeContainer extends React.Component<RouteComponentProps<any>> {
+interface IState {
+  isMenuOpen: boolean;
+}
+
+interface IProps extends RouteComponentProps<any> {}
+
+class LoggedInHomeContainer extends React.Component<IProps, IState> {
+  public state = {
+    isMenuOpen: false
+  };
   public render() {
+    const { isMenuOpen } = this.state;
     return (
       <ProfileQuery query={USER_PROFILE}>
         {profileData => {
@@ -24,11 +34,23 @@ class LoggedInHomeContainer extends React.Component<RouteComponentProps<any>> {
               }
             }
           }
-          return <LoggedOutHomePresenter />;
+          return (
+            <LoggedOutHomePresenter
+              isMenuOpen={isMenuOpen}
+              toggleMenu={this.toggleMenu}
+            />
+          );
         }}
       </ProfileQuery>
     );
   }
+  public toggleMenu = () => {
+    this.setState(prevState => {
+      return {
+        isMenuOpen: !prevState.isMenuOpen
+      };
+    });
+  };
 }
 
 export default LoggedInHomeContainer;
