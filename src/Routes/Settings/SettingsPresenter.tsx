@@ -30,10 +30,10 @@ const Button = styled.button`
 `;
 
 interface IProps {
-  profileClick: any;
-  passwordClick: any;
+  profileClick: () => void;
+  passwordClick: () => void;
   logoutClick: any;
-  widthdrawClick: any;
+  widthdrawClick: () => void;
 }
 
 const SettingsPresenter: React.SFC<IProps> = ({

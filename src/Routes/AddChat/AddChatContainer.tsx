@@ -36,7 +36,6 @@ class AddChatContainer extends React.Component<
         }}
       >
         {() => {
-          console.log(this.state.coupleId);
           return (
             <CreateChatMutation
               mutation={CREATE_CHAT}

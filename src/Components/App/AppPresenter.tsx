@@ -5,6 +5,7 @@ import AddChat from "../../Routes/AddChat";
 import AddFeed from "../../Routes/AddFeed";
 import AddPlace from "../../Routes/AddPlace";
 import Chat from "../../Routes/Chat";
+import ChatRoom from "../../Routes/ChatRoom";
 import CompleteCoupleVerification from "../../Routes/CompleteCoupleVerification";
 import CoupleVerification from "../../Routes/CoupleVerification";
 import FeedDetail from "../../Routes/FeedDetail";
@@ -69,12 +70,13 @@ const LoggedInRoutes: React.SFC = () => (
     <Route path={"/initial-profile"} exact={true} component={InitialProfile} />
     <Route path={"/profile"} exact={true} component={Profile} />
     <Route path={"/chat"} exact={true} component={Chat} />
+    <Route path={"/chat/:chatId"} exact={true} component={ChatRoom} />
     <Route path={"/chat/add"} exact={true} component={AddChat} />
     <Route path={"/places"} exact={true} component={Places} />
     <Route path={"/places/add"} exact={true} component={AddPlace} />
     <Route path={"/feeds"} exact={true} component={Feeds} />
     <Route path={"/feeds/add"} exact={true} component={AddFeed} />
-    <Route path={"/feeds/detail/:id"} exact={true} component={FeedDetail} />
+    <Route path={"/feeds/detail/:feedId"} exact={true} component={FeedDetail} />
     <Route path={"/settings"} exact={true} component={Settings} />
     <Redirect from={"*"} to={"/"} />
   </Switch>

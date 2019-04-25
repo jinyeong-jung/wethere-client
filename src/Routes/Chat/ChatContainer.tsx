@@ -9,11 +9,15 @@ import ChatPresenter from "./ChatPresenter";
 class ProfileQuery extends Query<getMyProfile> {}
 class CoupleQuery extends Query<getCoupleInfo> {}
 
-class ChatContainer extends React.Component<RouteComponentProps> {
+interface IState {
+  chatId: number;
+}
+
+class ChatContainer extends React.Component<RouteComponentProps<any>, IState> {
   public render() {
     return (
       <ProfileQuery query={USER_PROFILE}>
-        {({ data: ProfileData }) => {
+        {() => {
           return (
             <CoupleQuery
               query={COUPLE_INFO}
@@ -26,17 +30,25 @@ class ChatContainer extends React.Component<RouteComponentProps> {
                   } = data;
                   if (chat === null) {
                     this.props.history.push("/chat/add");
+                  } else {
+                    this.setState({
+                      chatId: chat.id
+                    });
                   }
                 }
               }}
             >
-              {({ data: CoupleData }) => <ChatPresenter />}
+              {() => <ChatPresenter onClick={this.handleBtnClick} />}
             </CoupleQuery>
           );
         }}
       </ProfileQuery>
     );
   }
+  public handleBtnClick = () => {
+    const { chatId } = this.state;
+    this.props.history.push(`/chat/${chatId}`, { state: chatId });
+  };
 }
 
 export default ChatContainer;
