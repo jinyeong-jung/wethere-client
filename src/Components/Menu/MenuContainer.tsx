@@ -9,7 +9,7 @@ class ProfileQuery extends Query<getMyProfile> {}
 class MenuContainer extends React.Component {
   public render() {
     return (
-      <ProfileQuery query={USER_PROFILE}>
+      <ProfileQuery query={USER_PROFILE} fetchPolicy={"cache-and-network"}>
         {({ data, loading }) => <MenuPresenter data={data} loading={loading} />}
       </ProfileQuery>
     );

@@ -4,7 +4,7 @@ export const UPDATE_PROFILE = gql`
   mutation updateMyProfile(
     $nickname: String
     $gender: String
-    $status: statusOptions
+    $status: String
     $profilePhoto: String
   ) {
     UpdateMyProfile(

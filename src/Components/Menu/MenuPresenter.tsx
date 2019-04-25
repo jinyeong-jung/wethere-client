@@ -34,6 +34,8 @@ const Image = styled.img`
 
 const Text = styled.div`
   margin-top: 10px;
+  display: flex;
+  align-items: center;
 `;
 
 const Name = styled.span`
@@ -42,6 +44,7 @@ const Name = styled.span`
 
 const Gender = styled.span`
   font-size: 12px;
+  color: white;
 `;
 
 const Status = styled.div`
@@ -115,9 +118,23 @@ const MenuPresenter: React.SFC<IProps> = ({
           />
           <Text>
             <Name>{user.nickname}</Name>
-            <Gender>{user.gender === "MALE" ? " 🧑" : " 👩"}</Gender>
+            <Gender>{user.gender === "MALE" ? "(男)" : "(女)"}</Gender>
           </Text>
-          <Status>({user.status})</Status>
+          <Status>
+            {user.status === "HAPPY"
+              ? "😁 행복행복"
+              : user.status === "DEPRESSED"
+              ? "😢 우울해요"
+              : user.status === "MAD"
+              ? "😤 화가 난다"
+              : user.status === "ENERGIZED"
+              ? "🤩 에너지 뿜뿜"
+              : user.status === "UNCERTAIN"
+              ? "🤐 모르겠당"
+              : user.status === "PEACEFUL"
+              ? "😊 평화롭구나"
+              : "😖 혼돈의 카오스"}
+          </Status>
           <Link to={"/profile"}>
             <Button type="button" value="프로필 수정" />
           </Link>

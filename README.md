@@ -2,7 +2,6 @@
 
 Client for the chat service for couples named "We There" made with ReactJS, Apollo, and Typescript.
 
-
 ## Screens:
 
 ## Logged Out:
@@ -25,7 +24,7 @@ Client for the chat service for couples named "We There" made with ReactJS, Apol
   - [x] Waiting
   - [x] Complete
 - [x] Initial Profile
-- [ ] Profile
+- [x] Profile
 - [ ] Chat
 - [ ] Settings
 - [ ] Places

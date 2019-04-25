@@ -108,7 +108,7 @@ export interface updateMyProfile {
 export interface updateMyProfileVariables {
   nickname?: string | null;
   gender?: string | null;
-  status?: statusOptions | null;
+  status?: string | null;
   profilePhoto?: string | null;
 }
 
@@ -287,16 +287,6 @@ export interface getMyProfile {
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
-
-export enum statusOptions {
-  CONFUSED = "CONFUSED",
-  DEPRESSED = "DEPRESSED",
-  ENERGIZED = "ENERGIZED",
-  HAPPY = "HAPPY",
-  MAD = "MAD",
-  PEACEFUL = "PEACEFUL",
-  UNCERTAIN = "UNCERTAIN",
-}
 
 //==============================================================
 // END Enums and Input Objects
