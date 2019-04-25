@@ -1,5 +1,2 @@
-import React from "react";
-
-const R = () => <span>Chat</span>;
-
-export default R;
+import ChatContainer from "./ChatContainer";
+export default ChatContainer;

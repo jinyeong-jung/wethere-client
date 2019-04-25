@@ -18,3 +18,20 @@ export const USER_PROFILE = gql`
     }
   }
 `;
+
+export const COUPLE_INFO = gql`
+  query getCoupleInfo {
+    GetCoupleInfo {
+      ok
+      error
+      couple {
+        id
+        partnerOneId
+        partnerTwoId
+        chat {
+          id
+        }
+      }
+    }
+  }
+`;

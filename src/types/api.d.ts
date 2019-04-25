@@ -2,6 +2,27 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: createChat
+// ====================================================
+
+export interface createChat_CreateChat {
+  __typename: "CreateChatResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface createChat {
+  CreateChat: createChat_CreateChat;
+}
+
+export interface createChatVariables {
+  coupleId: number;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: completeCoupleVerification
 // ====================================================
 
@@ -279,6 +300,37 @@ export interface getMyProfile_GetMyProfile {
 
 export interface getMyProfile {
   GetMyProfile: getMyProfile_GetMyProfile;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: getCoupleInfo
+// ====================================================
+
+export interface getCoupleInfo_GetCoupleInfo_couple_chat {
+  __typename: "Chat";
+  id: number;
+}
+
+export interface getCoupleInfo_GetCoupleInfo_couple {
+  __typename: "Couple";
+  id: number;
+  partnerOneId: number;
+  partnerTwoId: number | null;
+  chat: getCoupleInfo_GetCoupleInfo_couple_chat | null;
+}
+
+export interface getCoupleInfo_GetCoupleInfo {
+  __typename: "GetCoupleInfoResponse";
+  ok: boolean;
+  error: string | null;
+  couple: getCoupleInfo_GetCoupleInfo_couple | null;
+}
+
+export interface getCoupleInfo {
+  GetCoupleInfo: getCoupleInfo_GetCoupleInfo;
 }
 
 /* tslint:disable */

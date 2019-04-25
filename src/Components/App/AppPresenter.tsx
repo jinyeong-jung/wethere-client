@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import AddChat from "../../Routes/AddChat";
 import AddFeed from "../../Routes/AddFeed";
 import AddPlace from "../../Routes/AddPlace";
 import Chat from "../../Routes/Chat";
@@ -68,6 +69,7 @@ const LoggedInRoutes: React.SFC = () => (
     <Route path={"/initial-profile"} exact={true} component={InitialProfile} />
     <Route path={"/profile"} exact={true} component={Profile} />
     <Route path={"/chat"} exact={true} component={Chat} />
+    <Route path={"/chat/add"} exact={true} component={AddChat} />
     <Route path={"/places"} exact={true} component={Places} />
     <Route path={"/places/add"} exact={true} component={AddPlace} />
     <Route path={"/feeds"} exact={true} component={Feeds} />
