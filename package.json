@@ -5,7 +5,15 @@
   "dependencies": {
     "apollo": "2.3.1",
     "apollo-boost": "^0.3.1",
+    "apollo-cache-inmemory": "^1.5.1",
+    "apollo-client": "^2.5.1",
     "apollo-language-server": "^1.6.3",
+    "apollo-link": "^1.2.11",
+    "apollo-link-error": "^1.1.10",
+    "apollo-link-http": "^1.5.14",
+    "apollo-link-state": "^0.4.2",
+    "apollo-link-ws": "^1.0.17",
+    "apollo-utilities": "^1.2.1",
     "axios": "^0.18.0",
     "core-js": "^3.0.1",
     "graphql": "^14.2.1",
@@ -21,7 +29,8 @@
     "react-sidebar": "^3.0.2",
     "react-toastify": "^5.1.0",
     "styled-components": "^4.2.0",
-    "styled-reset": "^2.0.6"
+    "styled-reset": "^2.0.6",
+    "subscriptions-transport-ws": "^0.9.16"
   },
   "scripts": {
     "start": "react-scripts-ts start",

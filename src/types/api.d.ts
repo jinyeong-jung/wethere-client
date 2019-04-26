@@ -80,6 +80,24 @@ export interface sendChatMessageVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL subscription operation: messageSubscription
+// ====================================================
+
+export interface messageSubscription_MessageSubscription {
+  __typename: "Message";
+  id: number;
+  text: string;
+  userId: number;
+}
+
+export interface messageSubscription {
+  MessageSubscription: messageSubscription_MessageSubscription | null;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: completeCoupleVerification
 // ====================================================
 

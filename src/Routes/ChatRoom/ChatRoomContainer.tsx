@@ -1,20 +1,24 @@
+import { SubscribeToMoreOptions } from "apollo-boost";
 import React from "react";
 import { Mutation, MutationFn, Query } from "react-apollo";
 import { RouteComponentProps } from "react-router-dom";
 import { USER_PROFILE } from "../../sharedQueries.queries";
 import {
   getChat,
-  getChatVariables,
   getMyProfile,
   sendChatMessage,
   sendChatMessageVariables
 } from "../../types/api";
 import ChatRoomPresenter from "./ChatRoomPresenter";
-import { GET_CHAT, SEND_MESSAGE } from "./ChatRoomQueries.queries";
+import {
+  GET_CHAT,
+  MESSAGE_SUBSCRIPTION,
+  SEND_MESSAGE
+} from "./ChatRoomQueries.queries";
 
 class ProfileQuery extends Query<getMyProfile> {}
 
-class ChatQuery extends Query<getChat, getChatVariables> {}
+class ChatQuery extends Query<getChat> {}
 
 class SendMessageMutation extends Mutation<
   sendChatMessage,
@@ -46,35 +50,72 @@ class ChatRoomContainer extends React.Component<IProps, IState> {
         params: { chatId }
       }
     } = this.props;
-
     const { message } = this.state;
     return (
       <ProfileQuery query={USER_PROFILE}>
-        {({ data: profileData }) => {
-          return (
-            <ChatQuery query={GET_CHAT} variables={{ chatId: Number(chatId) }}>
-              {({ data: chatData, loading }) => {
-                return (
-                  <SendMessageMutation mutation={SEND_MESSAGE}>
-                    {sendMessageFn => {
-                      this.sendMessageMutation = sendMessageFn;
-                      return (
-                        <ChatRoomPresenter
-                          userData={profileData}
-                          chatData={chatData}
-                          loading={loading}
-                          message={message}
-                          onInputChange={this.onInputChange}
-                          onSubmit={this.onSubmit}
-                        />
-                      );
-                    }}
-                  </SendMessageMutation>
-                );
-              }}
-            </ChatQuery>
-          );
-        }}
+        {({ data: profileData }) => (
+          <ChatQuery query={GET_CHAT} variables={{ chatId: Number(chatId) }}>
+            {({ data: chatData, loading, subscribeToMore }) => {
+              const subscribeToMoreOptions: SubscribeToMoreOptions = {
+                document: MESSAGE_SUBSCRIPTION,
+                updateQuery: (prev, { subscriptionData }) => {
+                  if (!subscriptionData.data) {
+                    return prev;
+                  }
+
+                  const {
+                    data: { MessageSubscription }
+                  } = subscriptionData;
+                  const {
+                    GetChat: {
+                      chat: { messages }
+                    }
+                  } = prev;
+                  const newMessageId = MessageSubscription.id;
+
+                  if (messages.length > 0) {
+                    const latestMessageId = messages[messages.length - 1].id;
+                    if (newMessageId === latestMessageId) {
+                      return;
+                    }
+                  }
+
+                  const newObject = Object.assign({}, prev, {
+                    GetChat: {
+                      ...prev.GetChat,
+                      chat: {
+                        ...prev.GetChat.chat,
+                        messages: [
+                          ...prev.GetChat.chat.messages,
+                          MessageSubscription
+                        ]
+                      }
+                    }
+                  });
+                  return newObject;
+                }
+              };
+              subscribeToMore(subscribeToMoreOptions);
+              return (
+                <SendMessageMutation mutation={SEND_MESSAGE}>
+                  {sendMessageFn => {
+                    this.sendMessageMutation = sendMessageFn;
+                    return (
+                      <ChatRoomPresenter
+                        userData={profileData}
+                        chatData={chatData}
+                        loading={loading}
+                        message={message}
+                        onInputChange={this.onInputChange}
+                        onSubmit={this.onSubmit}
+                      />
+                    );
+                  }}
+                </SendMessageMutation>
+              );
+            }}
+          </ChatQuery>
+        )}
       </ProfileQuery>
     );
   }

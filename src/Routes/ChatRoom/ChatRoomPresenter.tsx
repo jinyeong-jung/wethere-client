@@ -9,16 +9,6 @@ import styled from "../../typed-components";
 const Container = styled.div`
   height: 100vh;
   background-color: ${props => props.theme.pinkColor};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`;
-
-const NullMessage = styled.div`
-  color: white;
-  font-size: 15px;
-  padding-bottom: 50px;
 `;
 
 const ExtendedExit = styled(Exit)`
@@ -50,6 +40,24 @@ const Button = styled.button`
   font-size: 13px;
 `;
 
+const Chat = styled.div`
+  height: 91vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px 30px;
+  overflow: auto;
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+`;
+
 interface IProps {
   userData?: getMyProfile;
   chatData?: getChat;
@@ -72,21 +80,23 @@ const ChatRoomPresenter: React.SFC<IProps> = ({
       <title>채팅방 - We There</title>
     </Helmet>
     <ExtendedExit backTo={"/chat"} />
-    {!loading && chat && (
+    {!loading && chat && user && (
       <React.Fragment>
-        {chat.messages &&
-          user &&
-          (chat.messages.length === 0 ? (
-            <NullMessage>메시지가 존재하지 않습니다.</NullMessage>
-          ) : (
-            chat.messages.map(message => (
-              <Message
-                key={message!.id}
-                text={message!.text}
-                mine={user!.id === message!.userId}
-              />
-            ))
-          ))}
+        <Chat>
+          {chat.messages &&
+            chat.messages.map(message => {
+              if (message) {
+                return (
+                  <Message
+                    key={message!.id}
+                    text={message!.text}
+                    mine={user!.id === message!.userId}
+                  />
+                );
+              }
+              return null;
+            })}
+        </Chat>
       </React.Fragment>
     )}
     <Form submitFn={onSubmit}>
