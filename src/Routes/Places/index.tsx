@@ -1,5 +1,5 @@
-import React from "react";
+import { GoogleApiWrapper } from "google-maps-react";
+import { MAPS_KEY } from "../../keys";
+import PlacesContainer from "./PlacesContainer";
 
-const R = () => <span>Places</span>;
-
-export default R;
+export default GoogleApiWrapper({ apiKey: MAPS_KEY })(PlacesContainer);

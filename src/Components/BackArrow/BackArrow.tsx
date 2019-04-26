@@ -9,9 +9,10 @@ const Container = styled.div`
 interface IProps {
   backTo: string;
   className?: string;
+  fillColor?: string;
 }
 
-const BackArrow: React.SFC<IProps> = ({ backTo, className }) => (
+const BackArrow: React.SFC<IProps> = ({ backTo, className, fillColor }) => (
   <Container className={className}>
     <Link to={backTo}>
       <svg
@@ -20,7 +21,7 @@ const BackArrow: React.SFC<IProps> = ({ backTo, className }) => (
         xmlns="http://www.w3.org/2000/svg"
         fillRule="evenodd"
         clipRule="evenodd"
-        fill="white"
+        fill={fillColor || "white"}
       >
         <path d="M20 .755l-14.374 11.245 14.374 11.219-.619.781-15.381-12 15.391-12 .609.755z" />
       </svg>
