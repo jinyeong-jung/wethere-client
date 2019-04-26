@@ -18,6 +18,9 @@ class ChatRoomContainer extends React.Component<IProps, IState> {
     if (!props.match.params.chatId) {
       props.history.push("/");
     }
+    if (!props.location.state) {
+      this.props.history.push("/chat");
+    }
     this.state = {
       message: ""
     };
@@ -28,6 +31,7 @@ class ChatRoomContainer extends React.Component<IProps, IState> {
         params: { chatId }
       }
     } = this.props;
+
     const { message } = this.state;
     return (
       <ChatQuery query={GET_CHAT} variables={{ chatId: Number(chatId) }}>

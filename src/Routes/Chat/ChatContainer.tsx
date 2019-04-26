@@ -21,6 +21,7 @@ class ChatContainer extends React.Component<RouteComponentProps<any>, IState> {
           return (
             <CoupleQuery
               query={COUPLE_INFO}
+              fetchPolicy={"cache-and-network"}
               onCompleted={data => {
                 if (data && data.GetCoupleInfo && data.GetCoupleInfo.couple) {
                   const {
@@ -47,7 +48,7 @@ class ChatContainer extends React.Component<RouteComponentProps<any>, IState> {
   }
   public handleBtnClick = () => {
     const { chatId } = this.state;
-    this.props.history.push(`/chat/${chatId}`, { state: chatId });
+    this.props.history.push(`/chat/${chatId}`, { chatId });
   };
 }
 
