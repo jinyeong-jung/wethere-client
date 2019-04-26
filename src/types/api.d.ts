@@ -58,6 +58,28 @@ export interface getChatVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: sendChatMessage
+// ====================================================
+
+export interface sendChatMessage_SendChatMessage {
+  __typename: "SendChatMessageResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface sendChatMessage {
+  SendChatMessage: sendChatMessage_SendChatMessage;
+}
+
+export interface sendChatMessageVariables {
+  chatId: number;
+  text: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: completeCoupleVerification
 // ====================================================
 
