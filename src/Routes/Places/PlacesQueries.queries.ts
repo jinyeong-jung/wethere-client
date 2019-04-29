@@ -20,3 +20,34 @@ export const ADD_PLACE = gql`
     }
   }
 `;
+
+export const GET_PLACES = gql`
+  query getPlaces {
+    GetPlaces {
+      ok
+      error
+      visitedPlaces {
+        id
+        name
+        lat
+        lng
+        address
+        isVisited
+        feeds {
+          id
+        }
+      }
+      notVisitedPlaces {
+        id
+        name
+        lat
+        lng
+        address
+        isVisited
+        feeds {
+          id
+        }
+      }
+    }
+  }
+`;

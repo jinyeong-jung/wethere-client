@@ -213,6 +213,57 @@ export interface addPlaceVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: getPlaces
+// ====================================================
+
+export interface getPlaces_GetPlaces_visitedPlaces_feeds {
+  __typename: "Feed";
+  id: number;
+}
+
+export interface getPlaces_GetPlaces_visitedPlaces {
+  __typename: "Place";
+  id: number;
+  name: string;
+  lat: number;
+  lng: number;
+  address: string;
+  isVisited: boolean;
+  feeds: (getPlaces_GetPlaces_visitedPlaces_feeds | null)[] | null;
+}
+
+export interface getPlaces_GetPlaces_notVisitedPlaces_feeds {
+  __typename: "Feed";
+  id: number;
+}
+
+export interface getPlaces_GetPlaces_notVisitedPlaces {
+  __typename: "Place";
+  id: number;
+  name: string;
+  lat: number;
+  lng: number;
+  address: string;
+  isVisited: boolean;
+  feeds: (getPlaces_GetPlaces_notVisitedPlaces_feeds | null)[] | null;
+}
+
+export interface getPlaces_GetPlaces {
+  __typename: "GetPlacesResponse";
+  ok: boolean;
+  error: string | null;
+  visitedPlaces: (getPlaces_GetPlaces_visitedPlaces | null)[] | null;
+  notVisitedPlaces: (getPlaces_GetPlaces_notVisitedPlaces | null)[] | null;
+}
+
+export interface getPlaces {
+  GetPlaces: getPlaces_GetPlaces;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: updateMyProfile
 // ====================================================
 

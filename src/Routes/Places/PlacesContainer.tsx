@@ -1,11 +1,25 @@
 import React from "react";
-import { Mutation } from "react-apollo";
+import { Mutation, MutationFn, Query } from "react-apollo";
 import ReactDOM from "react-dom";
 import { toast } from "react-toastify";
 import { geocode } from "src/mapHelpers";
-import { addPlace, addPlaceVariables } from "../../types/api";
+import { addPlace, addPlaceVariables, getPlaces } from "../../types/api";
 import PlacesPresenter from "./PlacesPresenter";
-import { ADD_PLACE } from "./PlacesQueries.queries";
+import { ADD_PLACE, GET_PLACES } from "./PlacesQueries.queries";
+
+const USER_ICON =
+  "http://www.hanryang-blog.com/media/contents_images/2019/04/29/user.png";
+
+const NEW_PLACE_ICON =
+  "http://www.hanryang-blog.com/media/contents_images/2019/04/29/pin_70fgfzX.png";
+
+const VISITED_PLACE =
+  "http://www.hanryang-blog.com/media/contents_images/2019/04/29/visited.png";
+
+const NOT_VISITED_PLACE =
+  "http://www.hanryang-blog.com/media/contents_images/2019/04/29/unvisited.png";
+
+class GetPlacesQuery extends Query<getPlaces> {}
 
 class AddPlaceMutation extends Mutation<addPlace, addPlaceVariables> {}
 
@@ -17,12 +31,16 @@ interface IState {
   adding: boolean;
   ableToAdd: boolean;
   isVisited: boolean;
+  seeVisits: boolean;
 }
 
 class PlacesContainer extends React.Component<any, IState> {
   public mapRef: any;
   public map: google.maps.Map;
+  public userMarker: google.maps.Marker;
   public newMarker: google.maps.Marker;
+  public placesMarker: google.maps.Marker;
+  public addPlaceMutation: MutationFn;
   constructor(props) {
     super(props);
     this.mapRef = React.createRef();
@@ -33,7 +51,8 @@ class PlacesContainer extends React.Component<any, IState> {
       isVisited: false,
       latitude: 0,
       longitude: 0,
-      name: ""
+      name: "",
+      seeVisits: false
     };
   }
 
@@ -52,48 +71,63 @@ class PlacesContainer extends React.Component<any, IState> {
       ableToAdd,
       adding,
       isVisited,
-      latitude,
-      longitude
+      seeVisits
     } = this.state;
     return (
-      <AddPlaceMutation
-        mutation={ADD_PLACE}
-        variables={{
-          address,
-          isVisited,
-          lat: latitude,
-          lng: longitude,
-          name
-        }}
+      <GetPlacesQuery
+        query={GET_PLACES}
+        fetchPolicy={"cache-and-network"}
+        pollInterval={500}
         onCompleted={data => {
-          const { AddPlace } = data;
-          if (AddPlace.ok) {
-            toast("새로운 플레이스가 등록되었습니다 🎉");
-            setTimeout(() => {
-              this.reloadTheMap();
-            }, 3000);
-          } else {
-            toast(AddPlace.error);
+          if (data && data.GetPlaces) {
+            const {
+              GetPlaces: { visitedPlaces, notVisitedPlaces }
+            } = data;
+            this.loadPlaces(visitedPlaces, notVisitedPlaces);
           }
         }}
       >
-        {addPlaceFn => (
-          <PlacesPresenter
-            mapRef={this.mapRef}
-            address={address}
-            name={name}
-            onChange={this.onInputChange}
-            onSubmit={this.onSubmit}
-            ableToAdd={ableToAdd}
-            handleClickAdd={this.handleClickAdd}
-            handleClickCancel={this.reloadTheMap}
-            adding={adding}
-            isVisited={isVisited}
-            onVisitBtnClick={this.onVisitBtnClick}
-            addPlaceFn={addPlaceFn}
-          />
-        )}
-      </AddPlaceMutation>
+        {() => {
+          return (
+            <AddPlaceMutation
+              mutation={ADD_PLACE}
+              onCompleted={data => {
+                const { AddPlace } = data;
+                if (AddPlace.ok) {
+                  toast("새로운 플레이스가 등록되었습니다 🎉");
+                  setTimeout(() => {
+                    this.reloadTheMap();
+                  }, 3000);
+                } else {
+                  toast(AddPlace.error);
+                }
+              }}
+            >
+              {addPlaceFn => {
+                this.addPlaceMutation = addPlaceFn;
+                return (
+                  <PlacesPresenter
+                    mapRef={this.mapRef}
+                    address={address}
+                    name={name}
+                    onChange={this.onInputChange}
+                    onSubmit={this.onSubmit}
+                    ableToAdd={ableToAdd}
+                    handleClickAdd={this.handleClickAdd}
+                    handleClickCancel={this.reloadTheMap}
+                    adding={adding}
+                    isVisited={isVisited}
+                    onVisitBtnClick={this.onVisitBtnClick}
+                    addPlaceFn={this.handleAddPlace}
+                    seeVisits={seeVisits}
+                    toggleVisitMode={this.toggleVisitMode}
+                  />
+                );
+              }}
+            </AddPlaceMutation>
+          );
+        }}
+      </GetPlacesQuery>
     );
   }
 
@@ -116,10 +150,40 @@ class PlacesContainer extends React.Component<any, IState> {
     const mapOptions: google.maps.MapOptions = {
       center: { lat: latitude, lng: longitude },
       disableDefaultUI: true,
-      minZoom: 8,
-      zoom: 13
+      zoom: 11
     };
     this.map = new maps.Map(mapDiv, mapOptions);
+    const markerOptions: google.maps.MarkerOptions = {
+      animation: google.maps.Animation.BOUNCE,
+      icon: USER_ICON,
+      map: this.map,
+      position: { lat: latitude, lng: longitude },
+      zIndex: 3
+    };
+    this.userMarker = new google.maps.Marker(markerOptions);
+  };
+
+  public loadPlaces = (visitedPlaces, notVisitedPlaces) => {
+    const { seeVisits } = this.state;
+    if (seeVisits) {
+      for (const place of visitedPlaces) {
+        const markerOptions: google.maps.MarkerOptions = {
+          icon: VISITED_PLACE,
+          map: this.map,
+          position: { lat: place.lat, lng: place.lng }
+        };
+        this.placesMarker = new google.maps.Marker(markerOptions);
+      }
+    } else {
+      for (const place of notVisitedPlaces) {
+        const markerOptions: google.maps.MarkerOptions = {
+          icon: NOT_VISITED_PLACE,
+          map: this.map,
+          position: { lat: place.lat, lng: place.lng }
+        };
+        this.placesMarker = new google.maps.Marker(markerOptions);
+      }
+    }
   };
 
   public onInputChange: React.ChangeEventHandler<HTMLInputElement> = event => {
@@ -145,8 +209,7 @@ class PlacesContainer extends React.Component<any, IState> {
 
       const markerOptions: google.maps.MarkerOptions = {
         animation: google.maps.Animation.DROP,
-        icon:
-          "http://www.hanryang-blog.com/media/contents_images/2019/04/29/pin_70fgfzX.png",
+        icon: NEW_PLACE_ICON,
         map: this.map,
         position: { lat, lng }
       };
@@ -165,6 +228,26 @@ class PlacesContainer extends React.Component<any, IState> {
     this.setState({
       ableToAdd: false,
       adding: true
+    });
+  };
+
+  public handleAddPlace = () => {
+    const { address, isVisited, latitude, longitude, name } = this.state;
+    this.addPlaceMutation({
+      variables: {
+        address,
+        isVisited,
+        lat: latitude,
+        lng: longitude,
+        name
+      }
+    });
+    this.setState({
+      adding: false,
+      address: "",
+      isVisited: false,
+      name: "",
+      seeVisits: false
     });
   };
 
@@ -195,6 +278,14 @@ class PlacesContainer extends React.Component<any, IState> {
     this.setState({
       isVisited: !isVisited
     });
+  };
+
+  public toggleVisitMode = () => {
+    const { seeVisits } = this.state;
+    this.setState({
+      seeVisits: !seeVisits
+    });
+    this.reloadTheMap();
   };
 }
 

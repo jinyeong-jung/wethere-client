@@ -52,6 +52,7 @@ const AddButton = styled(Button)`
   font-size: 14px;
   padding: 0px;
 `;
+
 const CancelButton = styled(Button)`
   width: 30%;
   height: 50px;
@@ -61,6 +62,21 @@ const CancelButton = styled(Button)`
   font-size: 14px;
   padding: 0px;
   color: ${props => props.theme.blackColor};
+`;
+
+const ToggleVisitModeBtn = styled.input`
+  position: absolute;
+  top: 60px;
+  left: 38%;
+  width: 24%;
+  border: none;
+  background-color: ${props => props.theme.blackColor};
+  color: white;
+  font-family: "Noto Sans KR", sans-serif;
+  padding: 5px;
+  box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 12px;
 `;
 
 interface IProps {
@@ -76,6 +92,8 @@ interface IProps {
   isVisited: boolean;
   onVisitBtnClick: () => void;
   addPlaceFn: any;
+  seeVisits: boolean;
+  toggleVisitMode: () => void;
 }
 
 class PlacesPresenter extends React.Component<IProps> {
@@ -92,7 +110,9 @@ class PlacesPresenter extends React.Component<IProps> {
       adding,
       isVisited,
       onVisitBtnClick,
-      addPlaceFn
+      addPlaceFn,
+      seeVisits,
+      toggleVisitMode
     } = this.props;
     return (
       <div>
@@ -122,6 +142,13 @@ class PlacesPresenter extends React.Component<IProps> {
               onClick={handleClickCancel}
             />
           </BtnContainer>
+        )}
+        {!adding && (
+          <ToggleVisitModeBtn
+            type="button"
+            value={seeVisits ? "아직 안 간 곳 보기" : "갔던 곳 보기"}
+            onClick={toggleVisitMode}
+          />
         )}
         {adding && (
           <PlacePopup
