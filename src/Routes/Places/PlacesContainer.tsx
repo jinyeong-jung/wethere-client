@@ -39,7 +39,6 @@ class PlacesContainer extends React.Component<any, IState> {
   public map: google.maps.Map;
   public userMarker: google.maps.Marker;
   public newMarker: google.maps.Marker;
-  public placesMarker: google.maps.Marker;
   public addPlaceMutation: MutationFn;
   constructor(props) {
     super(props);
@@ -165,6 +164,7 @@ class PlacesContainer extends React.Component<any, IState> {
 
   public loadPlaces = (visitedPlaces, notVisitedPlaces) => {
     const { seeVisits } = this.state;
+
     if (seeVisits) {
       for (const place of visitedPlaces) {
         const markerOptions: google.maps.MarkerOptions = {
@@ -172,7 +172,21 @@ class PlacesContainer extends React.Component<any, IState> {
           map: this.map,
           position: { lat: place.lat, lng: place.lng }
         };
-        this.placesMarker = new google.maps.Marker(markerOptions);
+        const placesMarker = new google.maps.Marker(markerOptions);
+
+        const content =
+          `<div>💛 ${place.name} 💛</div>` +
+          `<div>: ${place.address}</div>` +
+          `<br>` +
+          `<a href="/feeds/${place.id}">(피드 목록: click)</a>`;
+
+        const infowindow = new google.maps.InfoWindow({
+          content
+        });
+
+        placesMarker.addListener("click", () =>
+          infowindow.open(this.map, placesMarker)
+        );
       }
     } else {
       for (const place of notVisitedPlaces) {
@@ -181,7 +195,21 @@ class PlacesContainer extends React.Component<any, IState> {
           map: this.map,
           position: { lat: place.lat, lng: place.lng }
         };
-        this.placesMarker = new google.maps.Marker(markerOptions);
+        const placesMarker = new google.maps.Marker(markerOptions);
+
+        const content =
+          `<div>💛 ${place.name} 💛</div>` +
+          `<div>: ${place.address}</div>` +
+          `<br>` +
+          `<a href="/feeds/${place.id}">(피드 목록: CLICK)</a>`;
+
+        const infowindow = new google.maps.InfoWindow({
+          content
+        });
+
+        placesMarker.addListener("click", () =>
+          infowindow.open(this.map, placesMarker)
+        );
       }
     }
   };

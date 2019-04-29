@@ -73,6 +73,7 @@ const LoggedInRoutes: React.SFC = () => (
     <Route path={"/chat/add"} exact={true} component={AddChat} />
     <Route path={"/places"} exact={true} component={Places} />
     <Route path={"/feeds"} exact={true} component={Feeds} />
+    <Route path={"/feeds/:placeId"} exact={true} component={Feeds} />
     <Route path={"/feeds/add"} exact={true} component={AddFeed} />
     <Route path={"/feeds/detail/:feedId"} exact={true} component={FeedDetail} />
     <Route path={"/settings"} exact={true} component={Settings} />
