@@ -25,12 +25,13 @@ Client for the chat service for couples named "We There" made with ReactJS, Apol
   - [x] Complete
 - [x] Initial Profile
 - [x] Profile
-- [ ] Chat
+- [x] Chat
   - [x] Add Chat
   - [x] Chat Room
 - [x] Settings
 - [ ] Places
-- [ ] Add Place
+  - [x] Add Place
+  - [ ] Load Places
 - [ ] Feeds
 - [ ] Add Feed
 - [ ] Feed Detail

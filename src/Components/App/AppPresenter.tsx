@@ -3,7 +3,6 @@ import React from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import AddChat from "../../Routes/AddChat";
 import AddFeed from "../../Routes/AddFeed";
-import AddPlace from "../../Routes/AddPlace";
 import Chat from "../../Routes/Chat";
 import ChatRoom from "../../Routes/ChatRoom";
 import CompleteCoupleVerification from "../../Routes/CompleteCoupleVerification";
@@ -73,7 +72,6 @@ const LoggedInRoutes: React.SFC = () => (
     <Route path={"/chat/:chatId"} exact={true} component={ChatRoom} />
     <Route path={"/chat/add"} exact={true} component={AddChat} />
     <Route path={"/places"} exact={true} component={Places} />
-    <Route path={"/places/add"} exact={true} component={AddPlace} />
     <Route path={"/feeds"} exact={true} component={Feeds} />
     <Route path={"/feeds/add"} exact={true} component={AddFeed} />
     <Route path={"/feeds/detail/:feedId"} exact={true} component={FeedDetail} />

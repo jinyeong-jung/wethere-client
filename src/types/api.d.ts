@@ -188,6 +188,31 @@ export interface signUpEndVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: addPlace
+// ====================================================
+
+export interface addPlace_AddPlace {
+  __typename: "AddPlaceResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface addPlace {
+  AddPlace: addPlace_AddPlace;
+}
+
+export interface addPlaceVariables {
+  name: string;
+  lat: number;
+  lng: number;
+  address: string;
+  isVisited: boolean;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: updateMyProfile
 // ====================================================
 
