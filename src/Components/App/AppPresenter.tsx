@@ -7,6 +7,7 @@ import Chat from "../../Routes/Chat";
 import ChatRoom from "../../Routes/ChatRoom";
 import CompleteCoupleVerification from "../../Routes/CompleteCoupleVerification";
 import CoupleVerification from "../../Routes/CoupleVerification";
+import DeletePlace from "../../Routes/DeletePlace";
 import FeedDetail from "../../Routes/FeedDetail";
 import Feeds from "../../Routes/Feeds";
 import InitialProfile from "../../Routes/InitialProfile";
@@ -72,6 +73,11 @@ const LoggedInRoutes: React.SFC = () => (
     <Route path={"/chat/:chatId"} exact={true} component={ChatRoom} />
     <Route path={"/chat/add"} exact={true} component={AddChat} />
     <Route path={"/places"} exact={true} component={Places} />
+    <Route
+      path={"/places/delete/:placeId"}
+      exact={true}
+      component={DeletePlace}
+    />
     <Route path={"/feeds"} exact={true} component={Feeds} />
     <Route path={"/feeds/:placeId"} exact={true} component={Feeds} />
     <Route path={"/feeds/add"} exact={true} component={AddFeed} />

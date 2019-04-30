@@ -120,6 +120,56 @@ export interface completeCoupleVerificationVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: placeDetail
+// ====================================================
+
+export interface placeDetail_PlaceDetail_place {
+  __typename: "Place";
+  name: string;
+  address: string;
+  isVisited: boolean;
+}
+
+export interface placeDetail_PlaceDetail {
+  __typename: "PlaceDetailResponse";
+  ok: boolean;
+  error: string | null;
+  place: placeDetail_PlaceDetail_place | null;
+}
+
+export interface placeDetail {
+  PlaceDetail: placeDetail_PlaceDetail;
+}
+
+export interface placeDetailVariables {
+  placeId: number;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: deletePlace
+// ====================================================
+
+export interface deletePlace_DeletePlace {
+  __typename: "DeletePlaceResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface deletePlace {
+  DeletePlace: deletePlace_DeletePlace;
+}
+
+export interface deletePlaceVariables {
+  placeId: number;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: initialProfile
 // ====================================================
 

@@ -178,7 +178,9 @@ class PlacesContainer extends React.Component<any, IState> {
           `<div>💛 ${place.name} 💛</div>` +
           `<div>: ${place.address}</div>` +
           `<br>` +
-          `<a href="/feeds/${place.id}">(피드 목록: click)</a>`;
+          `<a href="/feeds/${place.id}">📃 피드 목록 (CLICK)</a>` +
+          `<br>` +
+          `<a href="/places/delete/${place.id}">❌ 플레이스 삭제 (CLICK)</a>`;
 
         const infowindow = new google.maps.InfoWindow({
           content
@@ -201,7 +203,9 @@ class PlacesContainer extends React.Component<any, IState> {
           `<div>💛 ${place.name} 💛</div>` +
           `<div>: ${place.address}</div>` +
           `<br>` +
-          `<a href="/feeds/${place.id}">(피드 목록: CLICK)</a>`;
+          `<a href="/feeds/${place.id}">📃 피드 목록 (CLICK)</a>` +
+          `<br>` +
+          `<a href="/places/delete/${place.id}">❌ 플레이스 삭제 (CLICK)</a>`;
 
         const infowindow = new google.maps.InfoWindow({
           content
