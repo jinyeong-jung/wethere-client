@@ -15,6 +15,7 @@ import LocalLogin from "../../Routes/LocalLogin";
 import LoggedInHome from "../../Routes/LoggedInHome";
 import LoggedOutHome from "../../Routes/LoggedOutHome";
 import PhoneVerification from "../../Routes/PhoneVerification";
+import PlaceFeeds from "../../Routes/PlaceFeeds";
 import Places from "../../Routes/Places";
 import Profile from "../../Routes/Profile";
 import RequestCoupleVerification from "../../Routes/RequestCoupleVerification";
@@ -79,7 +80,7 @@ const LoggedInRoutes: React.SFC = () => (
       component={DeletePlace}
     />
     <Route path={"/feeds"} exact={true} component={Feeds} />
-    <Route path={"/feeds/:placeId"} exact={true} component={Feeds} />
+    <Route path={"/feeds/:placeId"} exact={true} component={PlaceFeeds} />
     <Route path={"/feeds/add"} exact={true} component={AddFeed} />
     <Route path={"/feeds/detail/:feedId"} exact={true} component={FeedDetail} />
     <Route path={"/settings"} exact={true} component={Settings} />

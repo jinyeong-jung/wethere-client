@@ -1,5 +1,2 @@
-import React from "react";
-
-const R = () => <span>Feeds</span>;
-
-export default R;
+import FeedsContainer from "./FeedsContainer";
+export default FeedsContainer;

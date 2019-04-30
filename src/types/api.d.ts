@@ -170,6 +170,33 @@ export interface deletePlaceVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: getFeeds
+// ====================================================
+
+export interface getFeeds_GetFeeds_feeds {
+  __typename: "Feed";
+  id: number;
+  userId: number;
+  text: string;
+  placeId: number | null;
+  feedPicture: string | null;
+}
+
+export interface getFeeds_GetFeeds {
+  __typename: "GetFeedsResponse";
+  ok: boolean;
+  error: string | null;
+  feeds: (getFeeds_GetFeeds_feeds | null)[] | null;
+}
+
+export interface getFeeds {
+  GetFeeds: getFeeds_GetFeeds;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: initialProfile
 // ====================================================
 
