@@ -19,6 +19,8 @@ class ProfileQuery extends Query<getMyProfile> {}
 
 interface IState {
   placeId: number;
+  placeName: string;
+  placeAddress: string;
 }
 
 class PlaceFeedsContainer extends React.Component<
@@ -34,15 +36,27 @@ class PlaceFeedsContainer extends React.Component<
       <PlaceQuery
         query={PLACE_DETAIL}
         variables={{ placeId }}
-        onCompleted={() => {
-          this.setState({
-            placeId
-          });
+        onCompleted={data => {
+          const { PlaceDetail } = data;
+          if (PlaceDetail.ok) {
+            if (PlaceDetail.place) {
+              const { name, address } = PlaceDetail.place;
+              this.setState({
+                placeAddress: address,
+                placeId,
+                placeName: name
+              });
+            }
+          }
         }}
       >
         {({ data: placeData, loading: placeLoading }) => {
           return (
-            <FeedsQuery query={PLACE_FEEDS} variables={{ placeId }}>
+            <FeedsQuery
+              query={PLACE_FEEDS}
+              fetchPolicy={"cache-and-network"}
+              variables={{ placeId }}
+            >
               {({ data: feedData, loading: feedLoading }) => {
                 return (
                   <ProfileQuery query={USER_PROFILE}>
@@ -70,8 +84,12 @@ class PlaceFeedsContainer extends React.Component<
     this.props.history.push(`/feeds/detail/${feedId}`);
   };
   public handleWriteClick = () => {
-    const { placeId } = this.state;
-    this.props.history.push(`/feeds/${placeId}/add`, { placeId });
+    const { placeId, placeAddress, placeName } = this.state;
+    this.props.history.push(`/feeds/${placeId}/add`, {
+      placeAddress,
+      placeId,
+      placeName
+    });
   };
 }
 

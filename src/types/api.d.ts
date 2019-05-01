@@ -23,6 +23,29 @@ export interface createChatVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: addFeed
+// ====================================================
+
+export interface addFeed_AddFeed {
+  __typename: "AddFeedResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface addFeed {
+  AddFeed: addFeed_AddFeed;
+}
+
+export interface addFeedVariables {
+  placeId: number;
+  text: string;
+  feedPicture?: string | null;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: getChat
 // ====================================================
 

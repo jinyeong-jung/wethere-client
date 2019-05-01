@@ -79,10 +79,6 @@ const Data = styled.div`
   color: ${props => props.theme.blackColor};
 `;
 
-const Text = styled.div`
-  color: white;
-`;
-
 interface IProps {
   placeData?: placeDetail;
   placeLoading: boolean;
@@ -148,7 +144,7 @@ const PlaceFeedsPresenter: React.SFC<IProps> = ({
               </Feed>
             );
           } else {
-            return <Text>피드가 없습니다.</Text>;
+            return null;
           }
         })}
     </FeedsContainer>
