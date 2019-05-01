@@ -286,6 +286,28 @@ export interface getCommentsVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: addComment
+// ====================================================
+
+export interface addComment_AddComment {
+  __typename: "AddCommentResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface addComment {
+  AddComment: addComment_AddComment;
+}
+
+export interface addCommentVariables {
+  feedId: number;
+  text: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: getFeeds
 // ====================================================
 

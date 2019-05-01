@@ -1,4 +1,5 @@
 import React from "react";
+import { MutationFn } from "react-apollo";
 import Helmet from "react-helmet";
 import Exit from "src/Components/Exit";
 import Form from "src/Components/Form";
@@ -149,7 +150,15 @@ const Comment = styled.div`
   color: ${props => props.theme.greyColor};
 `;
 
+const ExtendedForm = styled(Form)`
+  width: 100%;
+  height: 25px;
+`;
+
 const CommentInput = styled.input`
+  border: none;
+  border-top: 0.5px solid ${props => props.theme.whiteColor};
+  background-color: #dfdfdf;
   width: 100%;
   height: 100%;
   padding: 5px;
@@ -164,8 +173,11 @@ interface IProps {
   profileData?: getMyProfile;
   commentData?: getComments;
   openDeleteAlertFn: () => void;
-  handleClickDelete: any;
-  handleClickCancel: any;
+  handleClickDelete: () => void;
+  handleClickCancel: () => void;
+  handleAddComment: MutationFn;
+  commentText: string;
+  onInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const FeedDetailPresenter: React.SFC<IProps> = ({
@@ -176,7 +188,10 @@ const FeedDetailPresenter: React.SFC<IProps> = ({
   commentData: { GetComments: { comments = null } = {} } = {},
   openDeleteAlertFn,
   handleClickDelete,
-  handleClickCancel
+  handleClickCancel,
+  handleAddComment,
+  commentText,
+  onInputChange
 }) => {
   return (
     <Container>
@@ -225,10 +240,16 @@ const FeedDetailPresenter: React.SFC<IProps> = ({
                   <Comment>댓글이 없습니다.</Comment>
                 )}
               </Comments>
-              <Form submitFn={null}>
-                <CommentInput type="text" placeholder="댓글을 입력하세요." />
-              </Form>
             </CommentContainer>
+            <ExtendedForm submitFn={handleAddComment}>
+              <CommentInput
+                type="text"
+                value={commentText}
+                name="commentText"
+                onChange={onInputChange}
+                placeholder="댓글을 입력하세요."
+              />
+            </ExtendedForm>
           </FeedContainer>
           <ExtendedButton
             type="button"

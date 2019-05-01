@@ -44,3 +44,12 @@ export const GET_COMMENTS = gql`
     }
   }
 `;
+
+export const ADD_COMMENT = gql`
+  mutation addComment($feedId: Int!, $text: String!) {
+    AddComment(feedId: $feedId, text: $text) {
+      ok
+      error
+    }
+  }
+`;

@@ -4,6 +4,8 @@ import { RouteComponentProps } from "react-router-dom";
 import { toast } from "react-toastify";
 import { USER_PROFILE } from "../../sharedQueries.queries";
 import {
+  addComment,
+  addCommentVariables,
   deleteFeed,
   deleteFeedVariables,
   feedDetail,
@@ -14,21 +16,21 @@ import {
 } from "../../types/api";
 import FeedDetailPresenter from "./FeedDetailPresenter";
 import {
+  ADD_COMMENT,
   DELETE_FEED,
   FEED_DETAIL,
   GET_COMMENTS
 } from "./FeedDetailQueries.queries";
 
 class ProfileQuery extends Query<getMyProfile> {}
-
 class FeedDetailQuery extends Query<feedDetail, feedDetailVariables> {}
-
 class DeleteFeedMutation extends Mutation<deleteFeed, deleteFeedVariables> {}
-
 class CommentsQuery extends Query<getComments, getCommentsVariables> {}
+class AddCommentMutation extends Mutation<addComment, addCommentVariables> {}
 
 interface IState {
   alertOpen: boolean;
+  commentText: string;
 }
 
 class FeedDetailContainer extends React.Component<
@@ -36,10 +38,12 @@ class FeedDetailContainer extends React.Component<
   IState
 > {
   public state = {
-    alertOpen: false
+    alertOpen: false,
+    commentText: ""
   };
   public deleteFeedMutation: MutationFn;
   public render() {
+    const { alertOpen, commentText } = this.state;
     const {
       match: { params }
     } = this.props;
@@ -47,7 +51,11 @@ class FeedDetailContainer extends React.Component<
     return (
       <ProfileQuery query={USER_PROFILE}>
         {({ data: profileData }) => (
-          <FeedDetailQuery query={FEED_DETAIL} variables={{ feedId }}>
+          <FeedDetailQuery
+            query={FEED_DETAIL}
+            fetchPolicy={"cache-and-network"}
+            variables={{ feedId }}
+          >
             {({ data, loading }) => (
               <DeleteFeedMutation
                 mutation={DELETE_FEED}
@@ -67,19 +75,42 @@ class FeedDetailContainer extends React.Component<
                 {deleteFeedFn => {
                   this.deleteFeedMutation = deleteFeedFn;
                   return (
-                    <CommentsQuery query={GET_COMMENTS} variables={{ feedId }}>
+                    <CommentsQuery
+                      query={GET_COMMENTS}
+                      fetchPolicy={"cache-and-network"}
+                      pollInterval={500}
+                      variables={{ feedId }}
+                    >
                       {({ data: commentData }) => {
                         return (
-                          <FeedDetailPresenter
-                            alertOpen={this.state.alertOpen}
-                            loading={loading}
-                            data={data}
-                            profileData={profileData}
-                            commentData={commentData}
-                            openDeleteAlertFn={this.openDeleteAlert}
-                            handleClickDelete={this.handleClickDelete}
-                            handleClickCancel={this.handleClickCancel}
-                          />
+                          <AddCommentMutation
+                            mutation={ADD_COMMENT}
+                            variables={{ feedId, text: commentText }}
+                            onCompleted={data => {
+                              const { AddComment } = data;
+                              if (AddComment.ok) {
+                                this.setState({ commentText: "" });
+                              } else {
+                                toast(AddComment.error);
+                              }
+                            }}
+                          >
+                            {addCommentFn => (
+                              <FeedDetailPresenter
+                                alertOpen={alertOpen}
+                                loading={loading}
+                                data={data}
+                                profileData={profileData}
+                                commentData={commentData}
+                                openDeleteAlertFn={this.openDeleteAlert}
+                                handleClickDelete={this.handleClickDelete}
+                                handleClickCancel={this.handleClickCancel}
+                                handleAddComment={addCommentFn}
+                                commentText={this.state.commentText}
+                                onInputChange={this.onInputChange}
+                              />
+                            )}
+                          </AddCommentMutation>
                         );
                       }}
                     </CommentsQuery>
@@ -92,6 +123,15 @@ class FeedDetailContainer extends React.Component<
       </ProfileQuery>
     );
   }
+
+  public onInputChange: React.ChangeEventHandler<HTMLInputElement> = event => {
+    const {
+      target: { name, value }
+    } = event;
+    this.setState({
+      [name]: value
+    } as any);
+  };
 
   public openDeleteAlert = () => {
     this.setState({
