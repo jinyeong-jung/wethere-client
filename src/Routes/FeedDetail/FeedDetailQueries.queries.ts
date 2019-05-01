@@ -21,3 +21,12 @@ export const FEED_DETAIL = gql`
     }
   }
 `;
+
+export const DELETE_FEED = gql`
+  mutation deleteFeed($feedId: Int!) {
+    DeleteFeed(feedId: $feedId) {
+      ok
+      error
+    }
+  }
+`;

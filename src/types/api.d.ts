@@ -236,6 +236,27 @@ export interface feedDetailVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: deleteFeed
+// ====================================================
+
+export interface deleteFeed_DeleteFeed {
+  __typename: "DeleteFeedResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface deleteFeed {
+  DeleteFeed: deleteFeed_DeleteFeed;
+}
+
+export interface deleteFeedVariables {
+  feedId: number;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: getFeeds
 // ====================================================
 
