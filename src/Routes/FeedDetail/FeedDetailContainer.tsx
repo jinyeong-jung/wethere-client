@@ -6,6 +6,8 @@ import { USER_PROFILE } from "../../sharedQueries.queries";
 import {
   addComment,
   addCommentVariables,
+  deleteComment,
+  deleteCommentVariables,
   deleteFeed,
   deleteFeedVariables,
   feedDetail,
@@ -17,6 +19,7 @@ import {
 import FeedDetailPresenter from "./FeedDetailPresenter";
 import {
   ADD_COMMENT,
+  DELETE_COMMENT,
   DELETE_FEED,
   FEED_DETAIL,
   GET_COMMENTS
@@ -27,6 +30,10 @@ class FeedDetailQuery extends Query<feedDetail, feedDetailVariables> {}
 class DeleteFeedMutation extends Mutation<deleteFeed, deleteFeedVariables> {}
 class CommentsQuery extends Query<getComments, getCommentsVariables> {}
 class AddCommentMutation extends Mutation<addComment, addCommentVariables> {}
+class DeleteCommentMutation extends Mutation<
+  deleteComment,
+  deleteCommentVariables
+> {}
 
 interface IState {
   alertOpen: boolean;
@@ -96,19 +103,24 @@ class FeedDetailContainer extends React.Component<
                             }}
                           >
                             {addCommentFn => (
-                              <FeedDetailPresenter
-                                alertOpen={alertOpen}
-                                loading={loading}
-                                data={data}
-                                profileData={profileData}
-                                commentData={commentData}
-                                openDeleteAlertFn={this.openDeleteAlert}
-                                handleClickDelete={this.handleClickDelete}
-                                handleClickCancel={this.handleClickCancel}
-                                handleAddComment={addCommentFn}
-                                commentText={this.state.commentText}
-                                onInputChange={this.onInputChange}
-                              />
+                              <DeleteCommentMutation mutation={DELETE_COMMENT}>
+                                {deleteCommentFn => (
+                                  <FeedDetailPresenter
+                                    alertOpen={alertOpen}
+                                    loading={loading}
+                                    data={data}
+                                    profileData={profileData}
+                                    commentData={commentData}
+                                    openDeleteAlertFn={this.openDeleteAlert}
+                                    handleClickDelete={this.handleClickDelete}
+                                    handleClickCancel={this.handleClickCancel}
+                                    handleAddComment={addCommentFn}
+                                    commentText={this.state.commentText}
+                                    onInputChange={this.onInputChange}
+                                    handleDeleteComment={deleteCommentFn}
+                                  />
+                                )}
+                              </DeleteCommentMutation>
                             )}
                           </AddCommentMutation>
                         );

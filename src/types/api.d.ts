@@ -308,6 +308,27 @@ export interface addCommentVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: deleteComment
+// ====================================================
+
+export interface deleteComment_DeleteComment {
+  __typename: "DeleteCommentResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface deleteComment {
+  DeleteComment: deleteComment_DeleteComment;
+}
+
+export interface deleteCommentVariables {
+  commentId: number;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: getFeeds
 // ====================================================
 

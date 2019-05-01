@@ -33,10 +33,10 @@ Client for the chat service for couples named "We There" made with ReactJS, Apol
   - [x] Add Place
   - [x] Load Places
   - [x] Delete Place
-- [ ] Feeds
+- [x] Feeds
   - [x] Add Feed
   - [x] Load All Feeds
   - [x] Load Place Feeds
   - [x] Feed Detail
   - [x] Delete Feed
-  - [ ] Feed Comments
+  - [x] Feed Comments

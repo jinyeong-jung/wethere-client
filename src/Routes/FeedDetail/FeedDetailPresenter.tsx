@@ -148,6 +148,14 @@ const Comment = styled.div`
   font-size: 13px;
   margin-bottom: 5px;
   color: ${props => props.theme.greyColor};
+  display: flex;
+  align-items: center;
+`;
+
+const DeleteCmtBtn = styled.span`
+  font-size: 10px;
+  margin-left: 10px;
+  cursor: pointer;
 `;
 
 const ExtendedForm = styled(Form)`
@@ -175,6 +183,7 @@ interface IProps {
   openDeleteAlertFn: () => void;
   handleClickDelete: () => void;
   handleClickCancel: () => void;
+  handleDeleteComment: MutationFn;
   handleAddComment: MutationFn;
   commentText: string;
   onInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -191,7 +200,8 @@ const FeedDetailPresenter: React.SFC<IProps> = ({
   handleClickCancel,
   handleAddComment,
   commentText,
-  onInputChange
+  onInputChange,
+  handleDeleteComment
 }) => {
   return (
     <Container>
@@ -230,6 +240,15 @@ const FeedDetailPresenter: React.SFC<IProps> = ({
                         <Comment key={comment.id}>
                           {comment.userId === user.id ? "내" : "파트너"}가
                           작성한 댓글: {comment.text}
+                          <DeleteCmtBtn
+                            onClick={() => {
+                              handleDeleteComment({
+                                variables: { commentId: comment.id }
+                              });
+                            }}
+                          >
+                            ❌
+                          </DeleteCmtBtn>
                         </Comment>
                       );
                     } else {
