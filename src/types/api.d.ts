@@ -193,6 +193,49 @@ export interface deletePlaceVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: feedDetail
+// ====================================================
+
+export interface feedDetail_FeedDetail_feed_user {
+  __typename: "User";
+  nickname: string | null;
+}
+
+export interface feedDetail_FeedDetail_feed_place {
+  __typename: "Place";
+  id: number;
+  name: string;
+  address: string;
+}
+
+export interface feedDetail_FeedDetail_feed {
+  __typename: "Feed";
+  text: string;
+  feedPicture: string | null;
+  user: feedDetail_FeedDetail_feed_user;
+  place: feedDetail_FeedDetail_feed_place;
+  createdAt: string;
+}
+
+export interface feedDetail_FeedDetail {
+  __typename: "FeedDetailResponse";
+  ok: boolean;
+  error: string | null;
+  feed: feedDetail_FeedDetail_feed | null;
+}
+
+export interface feedDetail {
+  FeedDetail: feedDetail_FeedDetail;
+}
+
+export interface feedDetailVariables {
+  feedId: number;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: getFeeds
 // ====================================================
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { MutationFn } from "react-apollo";
 import Helmet from "react-helmet";
 import Button from "src/Components/Button";
 import Exit from "src/Components/Exit";
@@ -66,8 +67,8 @@ interface IProps {
   placeName: string;
   placeAddress: string;
   feedText: string;
-  onInputChange: any;
-  onSubmit: any;
+  onInputChange: (event: React.ChangeEvent<any>) => void;
+  onSubmit: MutationFn;
 }
 
 const AddFeedPresenter: React.SFC<IProps> = ({
