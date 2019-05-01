@@ -30,3 +30,17 @@ export const DELETE_FEED = gql`
     }
   }
 `;
+
+export const GET_COMMENTS = gql`
+  query getComments($feedId: Int!) {
+    GetComments(feedId: $feedId) {
+      ok
+      error
+      comments {
+        id
+        text
+        userId
+      }
+    }
+  }
+`;

@@ -257,6 +257,35 @@ export interface deleteFeedVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: getComments
+// ====================================================
+
+export interface getComments_GetComments_comments {
+  __typename: "Comment";
+  id: number;
+  text: string;
+  userId: number;
+}
+
+export interface getComments_GetComments {
+  __typename: "GetCommentsResponse";
+  ok: boolean;
+  error: string | null;
+  comments: (getComments_GetComments_comments | null)[] | null;
+}
+
+export interface getComments {
+  GetComments: getComments_GetComments;
+}
+
+export interface getCommentsVariables {
+  feedId: number;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: getFeeds
 // ====================================================
 

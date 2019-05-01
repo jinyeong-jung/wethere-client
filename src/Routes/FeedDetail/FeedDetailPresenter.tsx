@@ -1,9 +1,9 @@
 import React from "react";
 import Helmet from "react-helmet";
-import Button from "src/Components/Button";
 import Exit from "src/Components/Exit";
+import Form from "src/Components/Form";
 import styled from "../../typed-components";
-import { feedDetail } from "../../types/api";
+import { feedDetail, getComments, getMyProfile } from "../../types/api";
 
 const Container = styled.div`
     height: 100vh;
@@ -25,7 +25,6 @@ padding-top: 20px;
   width: 80vw
   height: 90vh;
   margin-top: 5vh;
-  margin-bottom: 5vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,7 +32,7 @@ padding-top: 20px;
 
 const PicContainer = styled.div`
   width: 100%;
-  height: 200px;
+  height: 150px;
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
@@ -41,7 +40,7 @@ const PicContainer = styled.div`
 
 const Picture = styled.img`
   max-width: 100%;
-  height: 200px;
+  height: 150px;
   box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
 `;
@@ -62,7 +61,7 @@ const TextContainer = styled.div`
     background-color: rgba(255, 255, 255, 0.2);
     -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.2);
   }
-  padding: 15px;
+  padding: 10px;
 `;
 
 const Label = styled.div`
@@ -73,14 +72,18 @@ const Label = styled.div`
 
 const Text = styled.div`
   color: ${props => props.theme.greyColor}
-  font-size:13px;
-  margin-bottom: 20px;
+  font-size:12px;
+  margin-bottom: 10px;
 `;
 
-const ExtendedButton = styled(Button)`
-  margin: 0;
-  margin-bottom: 15px;
+const ExtendedButton = styled.input`
+  margin: 15px 0;
   width: 40%;
+  border: 0.5px solid rgba(0, 0, 0, 0.3);
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.3);
+  padding: 5px;
+  cursor: pointer;
 `;
 
 const AlertContainer = styled.div`
@@ -118,10 +121,48 @@ const AlertBtn = styled.input`
   cursor: pointer;
 `;
 
+const CommentContainer = styled.div`
+  background-color: #dfdfdf;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+`;
+
+const Comments = styled.div`
+  width: 100%;
+  height: 81%;
+  padding: 10px;
+`;
+
+const Comment = styled.div`
+  font-size: 13px;
+  margin-bottom: 5px;
+  color: ${props => props.theme.greyColor};
+`;
+
+const CommentInput = styled.input`
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  font-size: 13px;
+  color: ${props => props.theme.greyColor};
+`;
+
 interface IProps {
   alertOpen: boolean;
   loading: boolean;
   data?: feedDetail;
+  profileData?: getMyProfile;
+  commentData?: getComments;
   openDeleteAlertFn: () => void;
   handleClickDelete: any;
   handleClickCancel: any;
@@ -131,46 +172,70 @@ const FeedDetailPresenter: React.SFC<IProps> = ({
   alertOpen,
   loading,
   data: { FeedDetail: { feed = null } = {} } = {},
+  profileData: { GetMyProfile: { user = null } = {} } = {},
+  commentData: { GetComments: { comments = null } = {} } = {},
   openDeleteAlertFn,
   handleClickDelete,
   handleClickCancel
 }) => {
-  if (feed) {
-    const date = Number(feed.createdAt);
-    const timestamp = new Date(date * 1000).toDateString();
-    console.log(timestamp);
-  }
   return (
     <Container>
       <Helmet>
         <title>피드 - We there</title>
       </Helmet>
       <ExtendedExit backTo="/feeds" />
-      {!loading && feed && (
-        <FeedContainer>
-          <PicContainer>
-            <Picture
-              align="middle"
-              src={
-                feed.feedPicture ||
-                "http://www.eltis.org/sites/default/files/default_images/photo_default_4.png"
-              }
-            />
-          </PicContainer>
-          <TextContainer>
-            <Text>
-              {feed.user.nickname} /{" "}
-              {new Date(Number(feed.createdAt)).toLocaleString()} 작성
-            </Text>
-            <Label>플레이스</Label>
-            <Text>
-              {feed.place.name} / {feed.place.address}
-            </Text>
-            <Label>내용</Label>
-            <Text>{feed.text}</Text>
-          </TextContainer>
-          <ExtendedButton value="피드 삭제하기" onClick={openDeleteAlertFn} />
-        </FeedContainer>
+      {!loading && feed && user && (
+        <React.Fragment>
+          <FeedContainer>
+            <PicContainer>
+              <Picture
+                align="middle"
+                src={
+                  feed.feedPicture ||
+                  "http://www.eltis.org/sites/default/files/default_images/photo_default_4.png"
+                }
+              />
+            </PicContainer>
+            <TextContainer>
+              <Text>
+                {feed.user.nickname} /{" "}
+                {new Date(Number(feed.createdAt)).toLocaleString()} 작성
+              </Text>
+              <Text>
+                {feed.place.name} / {feed.place.address}
+              </Text>
+              <Label>{feed.text}</Label>
+            </TextContainer>
+            <CommentContainer>
+              <Comments>
+                {comments && comments.length > 0 ? (
+                  comments.map(comment => {
+                    if (comment) {
+                      return (
+                        <Comment key={comment.id}>
+                          {comment.userId === user.id ? "내" : "파트너"}가
+                          작성한 댓글: {comment.text}
+                        </Comment>
+                      );
+                    } else {
+                      return;
+                    }
+                  })
+                ) : (
+                  <Comment>댓글이 없습니다.</Comment>
+                )}
+              </Comments>
+              <Form submitFn={null}>
+                <CommentInput type="text" placeholder="댓글을 입력하세요." />
+              </Form>
+            </CommentContainer>
+          </FeedContainer>
+          <ExtendedButton
+            type="button"
+            value="피드 삭제하기"
+            onClick={openDeleteAlertFn}
+          />
+        </React.Fragment>
       )}
       {alertOpen && (
         <AlertContainer>
