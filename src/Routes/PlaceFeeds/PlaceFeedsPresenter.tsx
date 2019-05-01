@@ -77,6 +77,13 @@ const Data = styled.div`
   margin-bottom: 10px;
   font-size: 14px;
   color: ${props => props.theme.blackColor};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-height: 1.5;
+  max-height: 4.5;
 `;
 
 interface IProps {
