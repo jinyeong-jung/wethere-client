@@ -28,7 +28,6 @@ class DeletePlaceContainer extends React.Component<RouteComponentProps> {
         fetchPolicy={"cache-and-network"}
       >
         {({ data: placeData, loading }) => {
-          console.log(placeData);
           if (placeData && placeData.PlaceDetail) {
             if (!placeData.PlaceDetail.ok) {
               toast(placeData.PlaceDetail.error);

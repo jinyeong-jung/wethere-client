@@ -36,6 +36,6 @@ Client for the chat service for couples named "We There" made with ReactJS, Apol
 - [ ] Feeds
   - [ ] Add Feed
   - [x] Load All Feeds
-  - [ ] Load Place Feeds
+  - [x] Load Place Feeds
   - [ ] Delete Feed
   - [ ] Feed Detail

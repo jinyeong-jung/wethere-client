@@ -265,6 +265,35 @@ export interface signUpEndVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: getPlaceFeeds
+// ====================================================
+
+export interface getPlaceFeeds_GetPlaceFeeds_feeds {
+  __typename: "Feed";
+  id: number;
+  userId: number;
+  text: string;
+}
+
+export interface getPlaceFeeds_GetPlaceFeeds {
+  __typename: "GetPlaceFeedsResponse";
+  ok: boolean;
+  error: string | null;
+  feeds: (getPlaceFeeds_GetPlaceFeeds_feeds | null)[] | null;
+}
+
+export interface getPlaceFeeds {
+  GetPlaceFeeds: getPlaceFeeds_GetPlaceFeeds;
+}
+
+export interface getPlaceFeedsVariables {
+  placeId: number;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: addPlace
 // ====================================================
 
