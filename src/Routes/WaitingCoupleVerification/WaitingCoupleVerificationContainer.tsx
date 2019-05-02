@@ -26,13 +26,13 @@ class WaitingCoupleVerificationContainer extends React.Component<
                   user!.coupleForPartnerTwoId === null
                 ) {
                   setTimeout(() => {
-                    this.props.history.push("/verify-couple");
+                    this.props.history.push("/wethere-client/verify-couple");
                   }, 2000);
                 }
                 if (user!.verifiedCouple) {
                   toast("커플 등록이 완료되었습니다 💌");
                   setTimeout(() => {
-                    this.props.history.push("/initial-profile");
+                    this.props.history.push("/wethere-client/initial-profile");
                   }, 3000);
                 }
               }

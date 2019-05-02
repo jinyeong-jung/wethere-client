@@ -35,10 +35,10 @@ class ChatRoomContainer extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     if (!props.match.params.chatId) {
-      props.history.push("/");
+      props.history.push("/wethere-client/");
     }
     if (!props.location.state) {
-      this.props.history.push("/chat");
+      this.props.history.push("/wethere-client/chat");
     }
     this.state = {
       message: ""

@@ -32,7 +32,7 @@ class DeletePlaceContainer extends React.Component<RouteComponentProps> {
             if (!placeData.PlaceDetail.ok) {
               toast(placeData.PlaceDetail.error);
               setTimeout(() => {
-                this.props.history.push("/places");
+                this.props.history.push("/wethere-client/places");
               }, 3000);
             }
           }
@@ -46,7 +46,7 @@ class DeletePlaceContainer extends React.Component<RouteComponentProps> {
                 if (DeletePlace.ok) {
                   toast("플레이스가 삭제되었습니다.");
                   setTimeout(() => {
-                    this.props.history.push("/places");
+                    this.props.history.push("/wethere-client/places");
                   }, 3000);
                 } else {
                   toast(DeletePlace.error);

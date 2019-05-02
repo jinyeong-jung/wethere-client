@@ -178,9 +178,13 @@ class PlacesContainer extends React.Component<any, IState> {
           `<div>💛 ${place.name} 💛</div>` +
           `<div>: ${place.address}</div>` +
           `<br>` +
-          `<a href="/feeds/${place.id}">📃 피드 목록 및 글쓰기 (CLICK)</a>` +
+          `<a href="/wethere-client/feeds/${
+            place.id
+          }">📃 피드 목록 및 글쓰기 (CLICK)</a>` +
           `<br>` +
-          `<a href="/places/delete/${place.id}">❌ 플레이스 삭제 (CLICK)</a>`;
+          `<a href="/wethere-client/places/delete/${
+            place.id
+          }">❌ 플레이스 삭제 (CLICK)</a>`;
 
         const infowindow = new google.maps.InfoWindow({
           content
@@ -203,9 +207,13 @@ class PlacesContainer extends React.Component<any, IState> {
           `<div>💛 ${place.name} 💛</div>` +
           `<div>: ${place.address}</div>` +
           `<br>` +
-          `<a href="/feeds/${place.id}">📃 피드 목록 및 글쓰기 (CLICK)</a>` +
+          `<a href="/wethere-client/feeds/${
+            place.id
+          }">📃 피드 목록 및 글쓰기 (CLICK)</a>` +
           `<br>` +
-          `<a href="/places/delete/${place.id}">❌ 플레이스 삭제 (CLICK)</a>`;
+          `<a href="/wethere-client/places/delete/${
+            place.id
+          }">❌ 플레이스 삭제 (CLICK)</a>`;
 
         const infowindow = new google.maps.InfoWindow({
           content

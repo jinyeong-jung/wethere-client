@@ -208,7 +208,7 @@ const FeedDetailPresenter: React.SFC<IProps> = ({
       <Helmet>
         <title>피드 - We there</title>
       </Helmet>
-      <ExtendedExit backTo="/feeds" />
+      <ExtendedExit backTo="/wethere-client/feeds" />
       {!loading && feed && user && (
         <React.Fragment>
           <FeedContainer>

@@ -129,7 +129,7 @@ const ProfilePresenter: React.SFC<IProps> = ({
     <Helmet>
       <title>프로필 - We There</title>
     </Helmet>
-    <ExtendedBackArrow backTo={"/"} />
+    <ExtendedBackArrow backTo={"/wethere-client/"} />
     <ExtendedTitle text={"프로필"} />
     {!loading && user && (
       <ExtendedForm submitFn={onSubmit}>

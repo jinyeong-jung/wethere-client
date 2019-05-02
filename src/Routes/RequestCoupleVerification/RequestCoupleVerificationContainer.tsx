@@ -36,12 +36,12 @@ class RequestCoupleVerificationContainer extends React.Component<
           if (RequestCoupleVerification.ok) {
             toast("인증번호를 보냈습니다. 잠시만 기다려 주세요!");
             setTimeout(() => {
-              this.props.history.push("/verify-couple/waiting");
+              this.props.history.push("/wethere-client/verify-couple/waiting");
             }, 3000);
           } else {
             toast(RequestCoupleVerification.error);
             setTimeout(() => {
-              this.props.history.push("/");
+              this.props.history.push("/wethere-client/");
             });
           }
         }}

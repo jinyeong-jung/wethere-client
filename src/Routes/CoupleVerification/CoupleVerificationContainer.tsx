@@ -21,10 +21,12 @@ class CoupleVerificationContainer extends React.Component<RouteComponentProps> {
                 } = profileData.data;
                 if (user!.verifiedCouple) {
                   toast("이미 커플로 등록되었습니다.");
-                  this.props.history.push("/");
+                  this.props.history.push("/wethere-client/");
                 }
                 if (user!.coupleForPartnerOneId) {
-                  this.props.history.push("/verify-couple/waiting");
+                  this.props.history.push(
+                    "/wethere-client/verify-couple/waiting"
+                  );
                 }
               }
             }

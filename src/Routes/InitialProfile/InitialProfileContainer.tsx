@@ -68,7 +68,7 @@ class InitialProfileContainer extends React.Component<
                 if (UpdateMyProfile.ok) {
                   toast("프로필이 변경되었습니다 😁");
                   setTimeout(() => {
-                    this.props.history.push("/");
+                    this.props.history.push("/wethere-client/");
                   }, 3000);
                 } else {
                   toast(UpdateMyProfile.error);

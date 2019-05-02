@@ -31,7 +31,7 @@ class FeedsContainer extends React.Component<RouteComponentProps> {
   }
 
   public handleFeedClick = (feedId: number) => {
-    this.props.history.push(`/feeds/detail/${feedId}`);
+    this.props.history.push(`/wethere-client/feeds/detail/${feedId}`);
   };
 }
 

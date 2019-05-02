@@ -44,7 +44,7 @@ const WaitingCoupleVerificationPresenter: React.SFC = () => (
     <Text>기다리고 있습니다.</Text>
     <Text />
     <Text>인증이 완료되면 메인 화면으로 이동합니다.</Text>
-    <ExtendedLink to={"/verify-couple/request"}>
+    <ExtendedLink to={"/wethere-client/verify-couple/request"}>
       <ExtendedButton value={"인증 번호 다시 보내기"} />
     </ExtendedLink>
   </Container>

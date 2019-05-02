@@ -19,7 +19,7 @@ class PhoneVerificationContainer extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     if (!props.location.state) {
-      props.history.push("/");
+      props.history.push("/wethere-client/");
     }
     this.state = {
       phoneNumber: props.location.state.phoneNumber,
@@ -37,7 +37,7 @@ class PhoneVerificationContainer extends React.Component<IProps, IState> {
           if (SignUpEnd.ok) {
             toast("회원가입이 완료되었습니다.");
             setTimeout(() => {
-              this.props.history.push("/login");
+              this.props.history.push("/wethere-client/login");
             }, 3000);
           } else {
             toast(SignUpEnd.error);

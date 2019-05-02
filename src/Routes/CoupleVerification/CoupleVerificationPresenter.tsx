@@ -42,10 +42,10 @@ const CoupleVerificationPresenter: React.SFC = () => (
     <Text>서로를 커플로 등록하세요 💕</Text>
     <Text />
     <Text />
-    <Link to={"/verify-couple/request"}>
+    <Link to={"/wethere-client/verify-couple/request"}>
       <ExtendedButton value={"파트너에게 인증 번호 보내기"} />
     </Link>
-    <Link to={"/verify-couple/complete"}>
+    <Link to={"/wethere-client/verify-couple/complete"}>
       <ExtendedButton value={"파트너가 보낸 인증 번호 입력하기"} />
     </Link>
   </Container>

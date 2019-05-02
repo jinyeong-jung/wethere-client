@@ -36,55 +36,82 @@ const AppPresenter: React.SFC<IProps> = ({ isLoggedIn }) => (
 
 const LoggedOutRoutes: React.SFC = () => (
   <Switch>
-    <Route path={"/"} exact={true} component={LoggedOutHome} />
-    <Route path={"/signup"} exact={true} component={SignUp} />
-    <Route path={"/signup/verify-phone"} component={PhoneVerification} />
-    <Route path={"/login"} component={LocalLogin} />
-    <Route path={"/social-login"} component={SocialLogin} />
-    <Redirect from={"*"} to={"/"} />
+    <Route path={"/wethere-client"} exact={true} component={LoggedOutHome} />
+    <Route path={"/wethere-client/signup"} exact={true} component={SignUp} />
+    <Route
+      path={"/wethere-client/signup/verify-phone"}
+      component={PhoneVerification}
+    />
+    <Route path={"/wethere-client/login"} component={LocalLogin} />
+    <Route path={"/wethere-client/social-login"} component={SocialLogin} />
+    <Redirect from={"*"} to={"/wethere-client/"} />
   </Switch>
 );
 
 const LoggedInRoutes: React.SFC = () => (
   <Switch>
-    <Route path={"/"} exact={true} component={LoggedInHome} />
+    <Route path={"/wethere-client/"} exact={true} component={LoggedInHome} />
     <Route
-      path={"/verify-couple"}
+      path={"/wethere-client/verify-couple"}
       exact={true}
       component={CoupleVerification}
     />
     <Route
-      path={"/verify-couple/request"}
+      path={"/wethere-client/verify-couple/request"}
       exact={true}
       component={RequestCoupleVerification}
     />
     <Route
-      path={"/verify-couple/complete"}
+      path={"/wethere-client/verify-couple/complete"}
       exact={true}
       component={CompleteCoupleVerification}
     />
     <Route
-      path={"/verify-couple/waiting"}
+      path={"/wethere-client/verify-couple/waiting"}
       exact={true}
       component={WaitingCoupleVerification}
     />
-    <Route path={"/initial-profile"} exact={true} component={InitialProfile} />
-    <Route path={"/profile"} exact={true} component={Profile} />
-    <Route path={"/chat"} exact={true} component={Chat} />
-    <Route path={"/chat/:chatId"} exact={true} component={ChatRoom} />
-    <Route path={"/chat/add"} exact={true} component={AddChat} />
-    <Route path={"/places"} exact={true} component={Places} />
     <Route
-      path={"/places/delete/:placeId"}
+      path={"/wethere-client/initial-profile"}
+      exact={true}
+      component={InitialProfile}
+    />
+    <Route path={"/wethere-client/profile"} exact={true} component={Profile} />
+    <Route path={"/wethere-client/chat"} exact={true} component={Chat} />
+    <Route
+      path={"/wethere-client/chat/:chatId"}
+      exact={true}
+      component={ChatRoom}
+    />
+    <Route path={"/wethere-client/chat/add"} exact={true} component={AddChat} />
+    <Route path={"/wethere-client/places"} exact={true} component={Places} />
+    <Route
+      path={"/wethere-client/places/delete/:placeId"}
       exact={true}
       component={DeletePlace}
     />
-    <Route path={"/feeds"} exact={true} component={Feeds} />
-    <Route path={"/feeds/:placeId"} exact={true} component={PlaceFeeds} />
-    <Route path={"/feeds/:placeId/add"} exact={true} component={AddFeed} />
-    <Route path={"/feeds/detail/:feedId"} exact={true} component={FeedDetail} />
-    <Route path={"/settings"} exact={true} component={Settings} />
-    <Redirect from={"*"} to={"/"} />
+    <Route path={"/wethere-client/feeds"} exact={true} component={Feeds} />
+    <Route
+      path={"/wethere-client/feeds/:placeId"}
+      exact={true}
+      component={PlaceFeeds}
+    />
+    <Route
+      path={"/wethere-client/feeds/:placeId/add"}
+      exact={true}
+      component={AddFeed}
+    />
+    <Route
+      path={"/wethere-client/feeds/detail/:feedId"}
+      exact={true}
+      component={FeedDetail}
+    />
+    <Route
+      path={"/wethere-client/settings"}
+      exact={true}
+      component={Settings}
+    />
+    <Redirect from={"*"} to={"/wethere-client/"} />
   </Switch>
 );
 

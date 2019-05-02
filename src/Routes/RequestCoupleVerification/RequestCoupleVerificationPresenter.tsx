@@ -66,7 +66,7 @@ const RequestCoupleVerificationPresenter: React.SFC<IProps> = ({
     <Helmet>
       <title>인증 번호 보내기 - We There</title>
     </Helmet>
-    <ExtendedBackarrow backTo={"/verify-couple"} />
+    <ExtendedBackarrow backTo={"/wethere-client/verify-couple"} />
     <Title text={"인증 번호 전송"} />
     <ExtendedForm submitFn={onSubmit}>
       <Text>파트너의 핸드폰 번호를 입력하세요.</Text>

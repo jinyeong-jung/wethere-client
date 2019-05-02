@@ -72,7 +72,7 @@ class FeedDetailContainer extends React.Component<
                   if (DeleteFeed.ok) {
                     toast("피드가 삭제되었습니다.");
                     setTimeout(() => {
-                      this.props.history.push("/feeds");
+                      this.props.history.push("/wethere-client/feeds");
                     }, 3000);
                   } else {
                     toast(DeleteFeed.error);

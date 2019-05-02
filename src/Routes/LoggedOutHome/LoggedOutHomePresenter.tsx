@@ -62,13 +62,13 @@ const LoggedOutHomePresenter: React.SFC<IProps> = () => (
       </Helmet>
       <Header>WE THERE</Header>
       <Footer>
-        <ExtendedLink to={"/signup"}>
+        <ExtendedLink to={"/wethere-client/signup"}>
           <Button>새로 가입하기 👨‍👩‍👧</Button>
         </ExtendedLink>
-        <ExtendedLink to={"/login"}>
+        <ExtendedLink to={"/wethere-client/login"}>
           <Button>아이디로 로그인하기 🎶</Button>
         </ExtendedLink>
-        <ExtendedLink to={"/social-login"}>
+        <ExtendedLink to={"/wethere-client/social-login"}>
           <Button>소셜 로그인하기 💌</Button>
         </ExtendedLink>
       </Footer>

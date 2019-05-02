@@ -88,7 +88,7 @@ const FeedsPresenter: React.SFC<IProps> = ({
       <title>피드 - We There</title>
     </Helmet>
     <ExtendedTitle text="피드" />
-    <ExtendedBackArrow backTo="/" />
+    <ExtendedBackArrow backTo="/wethere-client/" />
     <FeedsContainer>
       {!loading &&
         feeds &&

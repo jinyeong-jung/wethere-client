@@ -50,7 +50,7 @@ const AddChatPresenter: React.SFC<IProps> = ({ onClick }) => (
     <Helmet>
       <title>채팅방 만들기 - We There</title>
     </Helmet>
-    <ExtendedBackArrow backTo={"/"} />
+    <ExtendedBackArrow backTo={"/wethere-client/"} />
     <TextContainer>
       <Text>아직 채팅방이 없어요 :(</Text>
       <Text>채팅방을 개설하고</Text>

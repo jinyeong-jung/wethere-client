@@ -81,11 +81,11 @@ class PlaceFeedsContainer extends React.Component<
     );
   }
   public handleFeedClick = (feedId: number) => {
-    this.props.history.push(`/feeds/detail/${feedId}`);
+    this.props.history.push(`/wethere-client/feeds/detail/${feedId}`);
   };
   public handleWriteClick = () => {
     const { placeId, placeAddress, placeName } = this.state;
-    this.props.history.push(`/feeds/${placeId}/add`, {
+    this.props.history.push(`/wethere-client/feeds/${placeId}/add`, {
       placeAddress,
       placeId,
       placeName

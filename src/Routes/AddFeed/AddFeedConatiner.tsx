@@ -53,7 +53,7 @@ class AddFeedContainer extends React.Component<
           if (AddFeed.ok) {
             toast("피드가 추가되었습니다!");
             setTimeout(() => {
-              this.props.history.push(`/feeds/${placeId}`);
+              this.props.history.push(`/wethere-client/feeds/${placeId}`);
             }, 3000);
           } else {
             toast(AddFeed.error);

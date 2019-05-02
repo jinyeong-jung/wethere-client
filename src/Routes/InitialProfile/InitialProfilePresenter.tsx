@@ -116,7 +116,7 @@ const InitialProfilePresenter: React.SFC<IProps> = ({
     <Helmet>
       <title>프로필 - We There</title>
     </Helmet>
-    <ExtendedExit backTo={"/"} />
+    <ExtendedExit backTo={"/wethere-client/"} />
     <TextContainer>
       <Text>We There를 시작하기 전에</Text>
       <Text>간단한 프로필 설정을 하고 갈까요?</Text>

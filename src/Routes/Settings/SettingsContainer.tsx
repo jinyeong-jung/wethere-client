@@ -27,7 +27,7 @@ class SettingsContainer extends React.Component<RouteComponentProps<any>> {
   }
 
   public profileClick = () => {
-    this.props.history.push("/profile");
+    this.props.history.push("/wethere-client/profile");
   };
   public passwordClick = () => {
     toast("🔨현재 준비중인 기능입니다");

@@ -79,7 +79,7 @@ const ChatRoomPresenter: React.SFC<IProps> = ({
     <Helmet>
       <title>채팅방 - We There</title>
     </Helmet>
-    <ExtendedExit backTo={"/chat"} />
+    <ExtendedExit backTo={"/wethere-client/chat"} />
     {!loading && chat && user && (
       <React.Fragment>
         <Chat>

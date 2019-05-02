@@ -119,7 +119,10 @@ class PlacesPresenter extends React.Component<IProps> {
         <Helmet>
           <title>플레이스 - We There</title>
         </Helmet>
-        <ExtendedBackArrow backTo={"/"} fillColor={"rgba(0,0,0,0.7)"} />
+        <ExtendedBackArrow
+          backTo={"/wethere-client/"}
+          fillColor={"rgba(0,0,0,0.7)"}
+        />
         <Map ref={mapRef} />
         <Form submitFn={onSubmit}>
           <AddressInput

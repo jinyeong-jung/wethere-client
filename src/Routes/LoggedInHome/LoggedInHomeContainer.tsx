@@ -29,7 +29,7 @@ class LoggedInHomeContainer extends React.Component<IProps, IState> {
                   GetMyProfile: { user }
                 } = profileData.data;
                 if (!user!.verifiedCouple) {
-                  this.props.history.push("/verify-couple");
+                  this.props.history.push("/wethere-client/verify-couple");
                 }
               }
             }

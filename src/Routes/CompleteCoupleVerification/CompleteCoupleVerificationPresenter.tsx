@@ -70,7 +70,7 @@ const CompleteCoupleVerificationPresenter: React.SFC<IProps> = ({
     <Helmet>
       <title>인증 번호 입력하기 - We There</title>
     </Helmet>
-    <ExtendedBackArrow backTo={"/verify-couple"} />
+    <ExtendedBackArrow backTo={"/wethere-client/verify-couple"} />
     <Title text={"인증 번호 입력"} />
     <ExtendedForm submitFn={onSubmit}>
       <Text>본인의 핸드폰 번호 (국가번호+전화번호)</Text>

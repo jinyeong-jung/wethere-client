@@ -109,7 +109,7 @@ const PlaceFeedsPresenter: React.SFC<IProps> = ({
     <Helmet>
       <title>피드 - We There</title>
     </Helmet>
-    <ExtendedBackArrow backTo="/places" />
+    <ExtendedBackArrow backTo="/wethere-client/places" />
     <WriteIcon onClick={handleWriteClick}>
       <svg
         xmlns="http://www.w3.org/2000/svg"

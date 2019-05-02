@@ -45,12 +45,12 @@ class AddChatContainer extends React.Component<
                 if (CreateChat.ok) {
                   toast("채팅방이 개설되었습니다 🎉");
                   setTimeout(() => {
-                    this.props.history.push("/chat");
+                    this.props.history.push("/wethere-client/chat");
                   }, 3000);
                 } else {
                   toast(CreateChat.error);
                   setTimeout(() => {
-                    this.props.history.push("/");
+                    this.props.history.push("/wethere-client/");
                   }, 3000);
                 }
               }}

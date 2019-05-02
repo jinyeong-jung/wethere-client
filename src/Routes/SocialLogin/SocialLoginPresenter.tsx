@@ -49,7 +49,7 @@ const SocialLoginPresenter: React.SFC<IProps> = ({
     <Helmet>
       <title>소셜 로그인 - We There</title>
     </Helmet>
-    <ExtendedBackArrow backTo={"/"} />
+    <ExtendedBackArrow backTo={"/wethere-client/"} />
     <Title text={"소셜 로그인"} />
     <FacebookLogin
       appId="445729162863444"

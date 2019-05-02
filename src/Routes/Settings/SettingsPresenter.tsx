@@ -46,7 +46,7 @@ const SettingsPresenter: React.SFC<IProps> = ({
     <Helmet>
       <title>설정 - We There</title>
     </Helmet>
-    <ExtendedBackArrow backTo={"/"} />
+    <ExtendedBackArrow backTo={"/wethere-client/"} />
     <Title text={"설정"} />
     <Button onClick={profileClick}>프로필 설정</Button>
     <Button onClick={passwordClick}>비밀번호 변경</Button>

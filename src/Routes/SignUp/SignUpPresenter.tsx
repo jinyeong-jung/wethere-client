@@ -50,7 +50,7 @@ const SignUpPresenter: React.SFC<IProps> = ({
     <Helmet>
       <title>회원가입 - We There</title>
     </Helmet>
-    <ExtendedBackArrow backTo={"/"} />
+    <ExtendedBackArrow backTo={"/wethere-client/"} />
     <Title text={"회원가입"} />
     <Form onSubmit={onSubmit}>
       <Input

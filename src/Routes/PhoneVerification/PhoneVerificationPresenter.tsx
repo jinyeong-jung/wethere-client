@@ -57,7 +57,7 @@ const PhoneVerificationPresenter: React.SFC<IProps> = ({
     <Helmet>
       <title>핸드폰 번호 인증 - We There</title>
     </Helmet>
-    <ExtendedBackArrow backTo={"/signup"} />
+    <ExtendedBackArrow backTo={"/wethere-client/signup"} />
     <Title text={"핸드폰 인증"} />
     <ExtendedForm submitFn={onSubmit}>
       <Text>문자로 받으신 인증 번호를 입력해주세요.</Text>

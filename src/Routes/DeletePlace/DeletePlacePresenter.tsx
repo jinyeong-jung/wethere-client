@@ -68,7 +68,7 @@ const DeletePlacePresenter: React.SFC<IProps> = ({
     <Helmet>
       <title>플레이스 삭제 - We There</title>
     </Helmet>
-    <ExtendedExit backTo="/places" />
+    <ExtendedExit backTo="/wethere-client/places" />
     <ExtendedTitle text={"플레이스를 삭제하시겠습니까?"} />
     {!loading && place && (
       <React.Fragment>

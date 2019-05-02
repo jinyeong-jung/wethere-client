@@ -40,7 +40,7 @@ const ChatPresenter: React.SFC<IProps> = ({ onClick }) => (
     <Helmet>
       <title>채팅 - We There</title>
     </Helmet>
-    <ExtendedBackArrow backTo={"/"} />
+    <ExtendedBackArrow backTo={"/wethere-client/"} />
     <Title text={"채팅"} />
     <Text>채팅방에서 파트너가 기다리고 있어요!</Text>
     <Text>어서 입장해 대화를 나눠 보세요 💛</Text>

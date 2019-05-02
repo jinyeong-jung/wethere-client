@@ -83,7 +83,7 @@ const AddFeedPresenter: React.SFC<IProps> = ({
     <Helmet>
       <title>피드 추가 - We There</title>
     </Helmet>
-    <ExtendedExit backTo={`/feeds/${placeId}`} />
+    <ExtendedExit backTo={`/wethere-client/feeds/${placeId}`} />
     <FeedContainer>
       <PlaceName>{placeName}</PlaceName>
       <PlaceAddress>{placeAddress}</PlaceAddress>

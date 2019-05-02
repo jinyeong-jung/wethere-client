@@ -37,7 +37,7 @@ class SignUpContainer extends React.Component<
             toast("💌 핸드폰 인증 번호를 확인해주세요!");
             setTimeout(() => {
               history.push({
-                pathname: "/signup/verify-phone",
+                pathname: "/wethere-client/signup/verify-phone",
                 state: {
                   phoneNumber
                 }

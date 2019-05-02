@@ -62,7 +62,7 @@ const LocalLoginPresenter: React.SFC<IProps> = ({
     <Helmet>
       <title>로그인 - We There</title>
     </Helmet>
-    <ExtendedBackArrow backTo={"/"} />
+    <ExtendedBackArrow backTo={"/wethere-client/"} />
     <Title text={"로그인"} />
     <ExtendedForm submitFn={onSubmit}>
       <Text>아이디</Text>

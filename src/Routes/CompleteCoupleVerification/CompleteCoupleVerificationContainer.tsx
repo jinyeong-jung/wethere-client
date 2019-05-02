@@ -38,12 +38,12 @@ class CompleteCoupleVerificationContainer extends React.Component<
           if (CompleteCoupleVerification.ok) {
             toast("커플 등록이 완료되었습니다 💌");
             setTimeout(() => {
-              this.props.history.push("/initial-profile");
+              this.props.history.push("/wethere-client/initial-profile");
             }, 3000);
           } else {
             toast(CompleteCoupleVerification.error);
             setTimeout(() => {
-              this.props.history.push("/");
+              this.props.history.push("/wethere-client/");
             });
           }
         }}

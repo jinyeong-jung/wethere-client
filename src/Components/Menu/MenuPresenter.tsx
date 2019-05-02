@@ -135,12 +135,12 @@ const MenuPresenter: React.SFC<IProps> = ({
               ? "😊 평화롭구나"
               : "😖 혼돈의 카오스"}
           </Status>
-          <Link to={"/profile"}>
+          <Link to={"/wethere-client/profile"}>
             <Button type="button" value="프로필 수정" />
           </Link>
         </Profile>
         <Category>
-          <ExtendedLink to={"/chat"}>
+          <ExtendedLink to={"/wethere-client/chat"}>
             <Icon>
               <svg
                 width="24"
@@ -155,7 +155,7 @@ const MenuPresenter: React.SFC<IProps> = ({
             </Icon>
             <Label>채팅</Label>
           </ExtendedLink>
-          <ExtendedLink to={"/places"}>
+          <ExtendedLink to={"/wethere-client/places"}>
             <Icon>
               <svg
                 width="24"
@@ -170,7 +170,7 @@ const MenuPresenter: React.SFC<IProps> = ({
             </Icon>
             <Label>플레이스</Label>
           </ExtendedLink>
-          <ExtendedLink to={"/feeds"}>
+          <ExtendedLink to={"/wethere-client/feeds"}>
             <Icon>
               <svg
                 width="24"
@@ -185,7 +185,7 @@ const MenuPresenter: React.SFC<IProps> = ({
             </Icon>
             <Label>피드</Label>
           </ExtendedLink>
-          <ExtendedLink to={"/settings"}>
+          <ExtendedLink to={"/wethere-client/settings"}>
             <Icon>
               <svg
                 width="24"
