@@ -30,7 +30,7 @@ class ChatContainer extends React.Component<RouteComponentProps<any>, IState> {
                     }
                   } = data;
                   if (chat === null) {
-                    this.props.history.push("/wethere-client/chat/add");
+                    this.props.history.push("/wethere-client/chat/add/");
                   } else {
                     this.setState({
                       chatId: chat.id
@@ -48,7 +48,7 @@ class ChatContainer extends React.Component<RouteComponentProps<any>, IState> {
   }
   public handleBtnClick = () => {
     const { chatId } = this.state;
-    this.props.history.push(`/chat/${chatId}`, { chatId });
+    this.props.history.push(`/wethere-client/chat/${chatId}`, { chatId });
   };
 }
 

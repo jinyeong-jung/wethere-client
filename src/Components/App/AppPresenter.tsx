@@ -78,12 +78,12 @@ const LoggedInRoutes: React.SFC = () => (
     />
     <Route path={"/wethere-client/profile"} exact={true} component={Profile} />
     <Route path={"/wethere-client/chat"} exact={true} component={Chat} />
+    <Route path={"/wethere-client/chat/add"} exact={true} component={AddChat} />
     <Route
       path={"/wethere-client/chat/:chatId"}
       exact={true}
       component={ChatRoom}
     />
-    <Route path={"/wethere-client/chat/add"} exact={true} component={AddChat} />
     <Route path={"/wethere-client/places"} exact={true} component={Places} />
     <Route
       path={"/wethere-client/places/delete/:placeId"}
