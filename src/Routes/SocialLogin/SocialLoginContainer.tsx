@@ -91,6 +91,7 @@ class SocialLoginContainer extends React.Component<IProps, IState> {
       </Mutation>
     );
   }
+
   public fbLoginCallback = response => {
     const { accessToken, id, name } = response;
     if (accessToken) {
@@ -105,8 +106,8 @@ class SocialLoginContainer extends React.Component<IProps, IState> {
       toast("로그인에 실패하였습니다 😢");
     }
   };
+
   public googleLoginCallback = response => {
-    console.log(response);
     const {
       accessToken,
       googleId,

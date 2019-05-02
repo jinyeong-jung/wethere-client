@@ -38,7 +38,7 @@ const Link = styled.button`
 
 interface IProps {
   fbLoginCallback: (response: any) => void;
-  googleLoginCallback: any;
+  googleLoginCallback: (response: any) => void;
 }
 
 const SocialLoginPresenter: React.SFC<IProps> = ({
