@@ -32,6 +32,8 @@ interface IState {
   ableToAdd: boolean;
   isVisited: boolean;
   seeVisits: boolean;
+  markerInfoOpen: boolean;
+  placeId: number;
 }
 
 class PlacesContainer extends React.Component<any, IState> {
@@ -50,7 +52,9 @@ class PlacesContainer extends React.Component<any, IState> {
       isVisited: false,
       latitude: 0,
       longitude: 0,
+      markerInfoOpen: false,
       name: "",
+      placeId: 0,
       seeVisits: false
     };
   }
@@ -70,7 +74,9 @@ class PlacesContainer extends React.Component<any, IState> {
       ableToAdd,
       adding,
       isVisited,
-      seeVisits
+      seeVisits,
+      markerInfoOpen,
+      placeId
     } = this.state;
     return (
       <GetPlacesQuery
@@ -86,7 +92,7 @@ class PlacesContainer extends React.Component<any, IState> {
           }
         }}
       >
-        {() => {
+        {({ data: placeData }) => {
           return (
             <AddPlaceMutation
               mutation={ADD_PLACE}
@@ -106,6 +112,7 @@ class PlacesContainer extends React.Component<any, IState> {
                 this.addPlaceMutation = addPlaceFn;
                 return (
                   <PlacesPresenter
+                    placeData={placeData}
                     mapRef={this.mapRef}
                     address={address}
                     name={name}
@@ -120,6 +127,9 @@ class PlacesContainer extends React.Component<any, IState> {
                     addPlaceFn={this.handleAddPlace}
                     seeVisits={seeVisits}
                     toggleVisitMode={this.toggleVisitMode}
+                    markerInfoOpen={markerInfoOpen}
+                    placeId={placeId}
+                    handleMarkerCancel={this.handleMarkerCancel}
                   />
                 );
               }}
@@ -174,24 +184,8 @@ class PlacesContainer extends React.Component<any, IState> {
         };
         const placesMarker = new google.maps.Marker(markerOptions);
 
-        const content =
-          `<div>💛 ${place.name} 💛</div>` +
-          `<div>: ${place.address}</div>` +
-          `<br>` +
-          `<a href="https://jinyeong-jung.github.io/wethere-client/feeds/${
-            place.id
-          }">📃 피드 목록 및 글쓰기 (CLICK)</a>` +
-          `<br>` +
-          `<a href="https://jinyeong-jung.github.io/wethere-client/places/delete/${
-            place.id
-          }">❌ 플레이스 삭제 (CLICK)</a>`;
-
-        const infowindow = new google.maps.InfoWindow({
-          content
-        });
-
         placesMarker.addListener("click", () =>
-          infowindow.open(this.map, placesMarker)
+          this.handleClickMarker(place.id)
         );
       }
     } else {
@@ -203,27 +197,25 @@ class PlacesContainer extends React.Component<any, IState> {
         };
         const placesMarker = new google.maps.Marker(markerOptions);
 
-        const content =
-          `<div>💛 ${place.name} 💛</div>` +
-          `<div>: ${place.address}</div>` +
-          `<br>` +
-          `<a href="https://jinyeong-jung.github.io/wethere-client/feeds/${
-            place.id
-          }">📃 피드 목록 및 글쓰기 (CLICK)</a>` +
-          `<br>` +
-          `<a href="https://jinyeong-jung.github.io/wethere-client/places/delete/${
-            place.id
-          }">❌ 플레이스 삭제 (CLICK)</a>`;
-
-        const infowindow = new google.maps.InfoWindow({
-          content
-        });
-
         placesMarker.addListener("click", () =>
-          infowindow.open(this.map, placesMarker)
+          this.handleClickMarker(place.id)
         );
       }
     }
+  };
+
+  public handleClickMarker = (placeId: number) => {
+    this.setState({
+      markerInfoOpen: true,
+      placeId
+    });
+  };
+
+  public handleMarkerCancel = () => {
+    this.setState({
+      markerInfoOpen: false,
+      placeId: 0
+    });
   };
 
   public onInputChange: React.ChangeEventHandler<HTMLInputElement> = event => {
