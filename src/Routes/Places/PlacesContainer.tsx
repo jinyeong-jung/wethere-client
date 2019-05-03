@@ -178,11 +178,11 @@ class PlacesContainer extends React.Component<any, IState> {
           `<div>💛 ${place.name} 💛</div>` +
           `<div>: ${place.address}</div>` +
           `<br>` +
-          `<a href="/wethere-client/feeds/${
+          `<a href="https://jinyeong-jung.github.io/wethere-client/feeds/${
             place.id
           }">📃 피드 목록 및 글쓰기 (CLICK)</a>` +
           `<br>` +
-          `<a href="/wethere-client/places/delete/${
+          `<a href="https://jinyeong-jung.github.io/wethere-client/places/delete/${
             place.id
           }">❌ 플레이스 삭제 (CLICK)</a>`;
 
@@ -207,11 +207,11 @@ class PlacesContainer extends React.Component<any, IState> {
           `<div>💛 ${place.name} 💛</div>` +
           `<div>: ${place.address}</div>` +
           `<br>` +
-          `<a href="/wethere-client/feeds/${
+          `<a href="https://jinyeong-jung.github.io/wethere-client/feeds/${
             place.id
           }">📃 피드 목록 및 글쓰기 (CLICK)</a>` +
           `<br>` +
-          `<a href="/wethere-client/places/delete/${
+          `<a href="https://jinyeong-jung.github.io/wethere-client/places/delete/${
             place.id
           }">❌ 플레이스 삭제 (CLICK)</a>`;
 
