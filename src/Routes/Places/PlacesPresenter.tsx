@@ -203,7 +203,7 @@ class PlacesPresenter extends React.Component<IProps> {
                 if (place) {
                   if (place.id === placeId) {
                     return (
-                      <React.Fragment>
+                      <React.Fragment key={place.id}>
                         <MarkerName>🏠 {place.name} 🏠</MarkerName>
                         <MarkerAddress>{place.address}</MarkerAddress>
                         <MarkerFeedLink
@@ -230,7 +230,7 @@ class PlacesPresenter extends React.Component<IProps> {
                 if (place) {
                   if (place.id === placeId) {
                     return (
-                      <React.Fragment>
+                      <React.Fragment key={place.id}>
                         <MarkerName>🏠 {place.name} 🏠</MarkerName>
                         <MarkerAddress>{place.address}</MarkerAddress>
                         <MarkerFeedLink

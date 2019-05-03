@@ -36,6 +36,7 @@ class PlaceFeedsContainer extends React.Component<
       <PlaceQuery
         query={PLACE_DETAIL}
         variables={{ placeId }}
+        fetchPolicy={"cache-and-network"}
         onCompleted={data => {
           const { PlaceDetail } = data;
           if (PlaceDetail.ok) {
