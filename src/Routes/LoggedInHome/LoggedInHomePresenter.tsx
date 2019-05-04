@@ -99,7 +99,7 @@ const LoggedOutHomePresenter: React.SFC<IProps> = ({
         <a href="https://github.com/jinyeong-jung">Github</a>
       </Item>
       <Item>정진영 (Jinyeong Jung)</Item>
-      <Item>© 한량 인생 - All rights reserved.</Item>
+      <Item>© We There - All rights reserved.</Item>
     </Footer>
   </Container>
 );
